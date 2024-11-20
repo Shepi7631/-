@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" addBOMForNewFiles="with BOM under Windows, with no BOM otherwise">
+    <file url="file://$PROJECT_DIR$/data/course.txt" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/data/grade/C.txt" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/src/controller/AddCourse.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/src/controller/AddUser.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/src/controller/CheckInfo.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/src/controller/CourseView.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/src/controller/DeleteUser.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/src/controller/EditInfo.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/src/controller/GradeEnter.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/src/controller/GradeInfo.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/src/controller/GradeSort.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/src/controller/Info.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/src/model/Administrator.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/src/model/Course.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/src/model/Student.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/src/model/Teacher.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/src/model/User.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/src/view/AdministratorPanel.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/src/view/MainFrame.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/src/view/SortGradeFrame.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/src/view/StudentsPanel.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/src/view/TeachersPanel.java" charset="GB2312" />
+  </component>
+</project>

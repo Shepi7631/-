@@ -120,7 +120,7 @@ public class DeleteUser extends JFrame implements ActionListener {
 					JOptionPane.showMessageDialog(null, "此学生不存在！", "提示", JOptionPane.INFORMATION_MESSAGE);
 				}
 			} else if (ch == "教师") {
-				if ((new CheckInfo().isMember("teacher", idt.getText(), "000") == 2)) {
+				 if ((new CheckInfo().isMember("teacher", idt.getText(), "000") == 2)) {
 					
 					file = file + "teacher.txt";
 					

@@ -1,0 +1,5 @@
+ad 123456 AD female 2020.1.2 computer net admin
+a 123456 jack male 2020.2.2 computer software student
+a1 123456 jack1 m 2000.1.1 computer software student
+a2 123 jack2 male 2000.1.1 computer software student
+t 123456 Tom male 2020.1.1 computer software teacher

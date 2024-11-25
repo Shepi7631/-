@@ -58,11 +58,10 @@ public class GradeEnter extends JFrame implements ActionListener {
   }
 
   @Override
-  public void actionPerformed(ActionEvent e) {
+  public void actionPerformed(ActionEvent e)  {
     if (e.getSource() == submit) {
       if (hasThisCourse(idt.getText()) == 1) {
         enter(); // 进入成绩输入界面
-
       }
       else {
         JOptionPane.showMessageDialog(null, "您未开设此课程！", "提示", JOptionPane.INFORMATION_MESSAGE);

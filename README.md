@@ -1,0 +1,4 @@
+目前这个数据库只针对学生，要成功运行，你首先得在本地创建一个数据库，然后根据自己的数据库名称和表来修改DBUtil中的url，username，password内容，以及studentDao中的sql语句
+表的一般内容如下：
+id name sex birthday pwd Major Institute
+如果要做信息识别，需要把model中的几个类型teacher，student，Administrator合并，并且在表中加入status结构，让程序可以从数据库中读取角色的身份

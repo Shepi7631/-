@@ -25,23 +25,23 @@ public class SortGradeFrame extends JFrame implements ActionListener {
   int[] result = null;
 
   public SortGradeFrame() {
-    super("ÊäÈë¿Î³ÌºÅºÍ³É¼¨±ê×¼");
+    super("è¾“å…¥è¯¾ç¨‹å·å’Œæˆç»©æ ‡å‡†");
     setSize(300, 300);
     setLocation(600, 400);
     contain = new JPanel();
     contain.setLayout(null);
     add(contain);
-    id = new JLabel("¿Î³ÌºÅ");
+    id = new JLabel("è¯¾ç¨‹å·");
     idt = new JTextField();
 
-    pass = new JLabel("¼°¸ñ");
+    pass = new JLabel("åŠæ ¼");
     passt = new JTextField();
-    good = new JLabel("Á¼ºÃ");
+    good = new JLabel("è‰¯å¥½");
     goodt = new JTextField();
-    excellent = new JLabel("ÓÅĞã");
+    excellent = new JLabel("ä¼˜ç§€");
     excellentt = new JTextField();
 
-    submit = new JButton("Ìá½»");
+    submit = new JButton("æäº¤");
     id.setBounds(38, 50, 75, 35);
     idt.setBounds(80, 50, 150, 35);
 
@@ -80,13 +80,13 @@ public class SortGradeFrame extends JFrame implements ActionListener {
     if (e.getSource() == submit) {
       if (idt.getText().equals("") || passt.getText().equals("") || goodt.getText().equals("")
           || excellentt.getText().equals("")) {
-        JOptionPane.showMessageDialog(null, "ĞÅÏ¢²»ÄÜÎª¿Õ£¡", "ÌáÊ¾", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "ä¿¡æ¯ä¸èƒ½ä¸ºç©ºï¼", "æç¤º", JOptionPane.INFORMATION_MESSAGE);
 
       }
       else if (new GradeSort(idt.getText(), Float.parseFloat(passt.getText()), Float.parseFloat(goodt.getText()),
           Float.parseFloat(excellentt.getText())).isValidate() == 1) {
 
-        JOptionPane.showMessageDialog(null, "³É¼¨±ê×¼ÉèÖÃ´íÎó£¡", "ÌáÊ¾", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "æˆç»©æ ‡å‡†è®¾ç½®é”™è¯¯ï¼", "æç¤º", JOptionPane.INFORMATION_MESSAGE);
 
       }
       else {
@@ -94,7 +94,7 @@ public class SortGradeFrame extends JFrame implements ActionListener {
             Float.parseFloat(goodt.getText()), Float.parseFloat(excellentt.getText()));
 
         if (gradeSort.hasCourse() == 0) {
-          JOptionPane.showMessageDialog(null, "´Ë¿Î³Ì²»´æÔÚ£¡", "ÌáÊ¾", JOptionPane.INFORMATION_MESSAGE);
+          JOptionPane.showMessageDialog(null, "æ­¤è¯¾ç¨‹ä¸å­˜åœ¨ï¼", "æç¤º", JOptionPane.INFORMATION_MESSAGE);
         }
         else {
 
@@ -108,16 +108,16 @@ public class SortGradeFrame extends JFrame implements ActionListener {
 
   void showResult() {
 
-    JFrame fm = new JFrame("³É¼¨Í³¼Æ½á¹û");
+    JFrame fm = new JFrame("æˆç»©ç»Ÿè®¡ç»“æœ");
     fm.setSize(300, 340);
     JPanel contain = new JPanel();
     fm.setLocation(600, 400);
     contain.setLayout(null);
 
-    JLabel fail = new JLabel("²»¼°¸ñ");
-    JLabel pass = new JLabel("¼°¸ñ");
-    JLabel good = new JLabel("Á¼ºÃ");
-    JLabel excellent = new JLabel("ÓÅĞã");
+    JLabel fail = new JLabel("ä¸åŠæ ¼");
+    JLabel pass = new JLabel("åŠæ ¼");
+    JLabel good = new JLabel("è‰¯å¥½");
+    JLabel excellent = new JLabel("ä¼˜ç§€");
 
     JTextField failt = new JTextField();
     JTextField passt = new JTextField();
@@ -143,10 +143,10 @@ public class SortGradeFrame extends JFrame implements ActionListener {
     contain.add(excellentt);
     fm.add(contain);
 
-    failt.setText(Integer.toString(this.result[0]) + "ÈË");
-    passt.setText(Integer.toString(this.result[1]) + "ÈË");
-    goodt.setText(Integer.toString(this.result[2]) + "ÈË");
-    excellentt.setText(Integer.toString(this.result[3]) + "ÈË");
+    failt.setText(Integer.toString(this.result[0]) + "äºº");
+    passt.setText(Integer.toString(this.result[1]) + "äºº");
+    goodt.setText(Integer.toString(this.result[2]) + "äºº");
+    excellentt.setText(Integer.toString(this.result[3]) + "äºº");
 
     fm.setVisible(true);
 

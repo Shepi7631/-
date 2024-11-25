@@ -13,9 +13,9 @@ public class Teacher extends User {
 		super();
 	}
 
-	public Teacher(String id, String pwd, String name, String sex,
-			String birthday, String institute, String major) {
-		super(id, pwd, name);
+	public Teacher(String id, String pwd, String name,  String status,String sex,
+				   String birthday, String institute, String major) {
+		super(id, pwd, name,status);
 		this.sex = sex;
 		this.birthday = birthday;
 		this.institute = institute;

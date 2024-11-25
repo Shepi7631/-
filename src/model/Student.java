@@ -1,12 +1,13 @@
 package model;
 
-
+//?????????????????
 public class Student extends User {
 
 	private String sex;
 	private String birthday;
 	private String institute;
 	private String major;
+
 	
 	
 	
@@ -15,9 +16,9 @@ public class Student extends User {
 	}
 
 
-	public Student(String id, String pwd, String name, String sex,
+	public Student(String id, String pwd, String name,  String status,String sex,
 			String birthday, String institute, String major) {
-		super(id, pwd, name);
+		super(id, pwd, name,status);
 		this.sex = sex;
 		this.birthday = birthday;
 		this.institute = institute;

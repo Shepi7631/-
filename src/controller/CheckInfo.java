@@ -1,32 +1,42 @@
 package controller;
 
+import model.Student;
 import model.User;
+import mysql_imp.DBUtil;
+import mysql_imp.dao.Info_Dao;
+import mysql_imp.dao.StudentDao;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 
 public class CheckInfo {
     /*
-     * µÇÂ½Ê±¼ì²éÓÃ»§ĞÅÏ¢
+     * ç™»é™†æ—¶æ£€æŸ¥ç”¨æˆ·ä¿¡æ¯
      */
+    private DBUtil dbUtil = new DBUtil();
+    private StudentDao stu = new StudentDao();
+
     public int isMember(String table, String id, String passwd) {
 
-        // String file = "D://test//".concat(table.concat(".txt"));
-        String file = System.getProperty("user.dir") + "/data".concat("/").concat(table).concat(".txt");
+        String file = "D://test//".concat(table.concat(".txt"));
+        //String file = System.getProperty("user.dir") + "/data".concat("/").concat(table).concat(".txt");
         // StringBuilder result = new StringBuilder();
+
         try {
-            BufferedReader br = new BufferedReader(new FileReader(file));// ¹¹ÔìÒ»¸öBufferedReaderÀàÀ´¶ÁÈ¡ÎÄ¼ş
+            BufferedReader br = new BufferedReader(new FileReader(file));// æ„é€ ä¸€ä¸ªBufferedReaderç±»æ¥è¯»å–æ–‡ä»¶
             String s = null;
-            while ((s = br.readLine()) != null) {// Ê¹ÓÃreadLine·½·¨£¬Ò»´Î¶ÁÒ»ĞĞ
+            while ((s = br.readLine()) != null) {// ä½¿ç”¨readLineæ–¹æ³•ï¼Œä¸€æ¬¡è¯»ä¸€è¡Œ
                 String[] result = s.split(" ");
                 if (result[0].equals(id) && result[1].equals(passwd)) {
                     br.close();
-                    return 1;// ÅĞ¶ÏµÇÂ¼ĞÅÏ¢ÊÇ·ñÕıÈ·
+                    return 1;// åˆ¤æ–­ç™»å½•ä¿¡æ¯æ˜¯å¦æ­£ç¡®
                 }
                 if (result[0].equals(id)) {
                     br.close();
-                    return 2;// ÅĞ¶Ï¸ÃÓÃ»§ÊÇ·ñ´æÔÚ
+                    return 2;// åˆ¤æ–­è¯¥ç”¨æˆ·æ˜¯å¦å­˜åœ¨
                 }
 
             }
@@ -37,34 +47,64 @@ public class CheckInfo {
         return 0;
     }
 
-    public UserType CheckMember(String id, String passwd) {
-        String file = System.getProperty("user.dir") + "/data".concat("/user.txt");
+//    public UserType CheckMember(String id, String passwd) {
+//        String file = System.getProperty("user.dir") + "/data".concat("/user.txt");
+//        try {
+//            BufferedReader br = new BufferedReader(new FileReader(file));// æ„é€ ä¸€ä¸ªBufferedReaderç±»æ¥è¯»å–æ–‡ä»¶
+//            String s = null;
+//            while ((s = br.readLine()) != null) {// ä½¿ç”¨readLineæ–¹æ³•ï¼Œä¸€æ¬¡è¯»ä¸€è¡Œ
+//                String[] result = s.split(" ");
+//                if (result[0].equals(id) && result[1].equals(passwd)) {
+//                    br.close();
+//                    switch (result[7]) {
+//                        case "student":
+//                            return UserType.Student;
+//                        case "teacher":
+//                            return UserType.Teacher;
+//                        case "admin":
+//                            return UserType.Administrator;
+//                        default:
+//                            return UserType.Error;
+//                    }
+//                }
+//            }
+//            br.close();
+//            return UserType.Error;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return UserType.Error;
+//    }
+    public UserType Checke_member( String id, String passwd) {
+
+        UserType us=null;
+        Student stu = new Student();
+        stu.setId(id);
+        stu.setPwd(passwd);
+        Connection conn = null;
+        Student current_stu = null;
         try {
-            BufferedReader br = new BufferedReader(new FileReader(file));// ¹¹ÔìÒ»¸öBufferedReaderÀàÀ´¶ÁÈ¡ÎÄ¼ş
-            String s = null;
-            while ((s = br.readLine()) != null) {// Ê¹ÓÃreadLine·½·¨£¬Ò»´Î¶ÁÒ»ĞĞ
-                String[] result = s.split(" ");
-                if (result[0].equals(id) && result[1].equals(passwd)) {
-                    br.close();
-                    switch (result[7]) {
-                        case "student":
-                            return UserType.Student;
-                        case "teacher":
-                            return UserType.Teacher;
-                        case "admin":
-                            return UserType.Administrator;
-                        default:
-                            return UserType.Error;
-                    }
-                }
+            conn = dbUtil.getConnection();
+            current_stu = StudentDao.login(conn, stu);
+            if (current_stu == null) {
+                us=UserType.Error;
+            } else {
+                us= UserType.Student;
             }
-            br.close();
-            return UserType.Error;
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return UserType.Error;
-    }
+        finally {
+            try {
+                dbUtil.close_Con(conn);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return us;
 
+
+    }
 
 }

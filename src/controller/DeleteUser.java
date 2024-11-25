@@ -22,30 +22,30 @@ import javax.swing.JTextField;
 
 public class DeleteUser extends JFrame implements ActionListener {
 	/**
-	 * ¹ÜÀíÔ±É¾³ıÓÃ»§
+	 * ç®¡ç†å‘˜åˆ é™¤ç”¨æˆ·
 	 */
 	private static final long serialVersionUID = 1L;
-	JPanel contain;
+	JPanel contain;//ç”¨äºåŒ…å«å…¶ä»–çš„GUIç»„ä»¶
 	JLabel id;
 	JTextField idt;
-	Choice chooice;
+	Choice chooice;/*Choice è¢«ç”¨æ¥æä¾›ä¸€ä¸ªä¸‹æ‹‰èœå•ï¼Œå…è®¸ç”¨æˆ·é€‰æ‹©è¦åˆ é™¤çš„ç”¨æˆ·ç±»å‹ï¼ˆä¾‹å¦‚å­¦ç”Ÿã€æ•™å¸ˆã€ç®¡ç†å‘˜ï¼‰*/
 	JButton submit;
 	
 	String file = System.getProperty("user.dir")+"/data/";
 	// String file = "D://test//";
 
 	public DeleteUser() {
-		super("É¾³ıÓÃ»§");
+		super("åˆ é™¤ç”¨æˆ·");
 		setSize(300, 340);
 		setLocation(600, 400);
 		contain = new JPanel();
 		contain.setLayout(null);
 		chooice = new Choice();
-		chooice.addItem("Ñ§Éú");
-		chooice.addItem("½ÌÊ¦");
-		chooice.addItem("½ÌÎñÔ±");
-		id = new JLabel("ÕÊºÅ");
-		submit = new JButton("Ìá½»");
+		chooice.addItem("å­¦ç”Ÿ");
+		chooice.addItem("æ•™å¸ˆ");
+		chooice.addItem("æ•™åŠ¡å‘˜");
+		id = new JLabel("å¸å·");
+		submit = new JButton("æäº¤");
 		idt = new JTextField();
 		id.setBounds(42, 45, 75, 35);
 		idt.setBounds(80, 45, 150, 35);
@@ -64,7 +64,7 @@ public class DeleteUser extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == submit) {
 			String ch = (String) chooice.getSelectedItem();
-			if (ch == "Ñ§Éú") {
+			if (ch == "å­¦ç”Ÿ") {
 				if ((new CheckInfo().isMember("student", idt.getText(), "000") == 2)) {
 					
 					file = file + "student.txt";
@@ -74,7 +74,7 @@ public class DeleteUser extends JFrame implements ActionListener {
 					try {
 						BufferedReader br = new BufferedReader(new FileReader(file));
 						String s = null;
-						while ((s = br.readLine()) != null) {  // ÏÈ½«Ô­À´´æÔÚµÄĞÅÏ¢´æ´¢ÆğÀ´
+						while ((s = br.readLine()) != null) {  // å…ˆå°†åŸæ¥å­˜åœ¨çš„ä¿¡æ¯å­˜å‚¨èµ·æ¥
 							String[] result = s.split(" ");
 							
 							if(result[0].equals(idt.getText())){
@@ -115,11 +115,11 @@ public class DeleteUser extends JFrame implements ActionListener {
 					}
 
 					
-					JOptionPane.showMessageDialog(null, "É¾³ıÑ§Éú³É¹¦", "ÌáÊ¾", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "åˆ é™¤å­¦ç”ŸæˆåŠŸ", "æç¤º", JOptionPane.INFORMATION_MESSAGE);
 				} else {
-					JOptionPane.showMessageDialog(null, "´ËÑ§Éú²»´æÔÚ£¡", "ÌáÊ¾", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "æ­¤å­¦ç”Ÿä¸å­˜åœ¨ï¼", "æç¤º", JOptionPane.INFORMATION_MESSAGE);
 				}
-			} else if (ch == "½ÌÊ¦") {
+			} else if (ch == "æ•™å¸ˆ") {
 				 if ((new CheckInfo().isMember("teacher", idt.getText(), "000") == 2)) {
 					
 					file = file + "teacher.txt";
@@ -129,7 +129,7 @@ public class DeleteUser extends JFrame implements ActionListener {
 					try {
 						BufferedReader br = new BufferedReader(new FileReader(file));
 						String s = null;
-						while ((s = br.readLine()) != null) {  // ÏÈ½«Ô­À´´æÔÚµÄĞÅÏ¢´æ´¢ÆğÀ´
+						while ((s = br.readLine()) != null) {  // å…ˆå°†åŸæ¥å­˜åœ¨çš„ä¿¡æ¯å­˜å‚¨èµ·æ¥
 							String[] result = s.split(" ");
 							
 							if(result[0].equals(idt.getText())){
@@ -170,11 +170,11 @@ public class DeleteUser extends JFrame implements ActionListener {
 					}
 
 				
-					JOptionPane.showMessageDialog(null, "É¾³ı½ÌÊ¦³É¹¦", "ÌáÊ¾", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "åˆ é™¤æ•™å¸ˆæˆåŠŸ", "æç¤º", JOptionPane.INFORMATION_MESSAGE);
 				} else {
-					JOptionPane.showMessageDialog(null, "´Ë½ÌÊ¦²»´æÔÚ£¡", "ÌáÊ¾", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "æ­¤æ•™å¸ˆä¸å­˜åœ¨ï¼", "æç¤º", JOptionPane.INFORMATION_MESSAGE);
 				}
-			} else if (ch == "½ÌÎñÔ±") {
+			} else if (ch == "æ•™åŠ¡å‘˜") {
 				if ((new CheckInfo().isMember("administrator", idt.getText(), "000") == 2)) {
 					
 					file = file + "administrator.txt";
@@ -184,7 +184,7 @@ public class DeleteUser extends JFrame implements ActionListener {
 					try {
 						BufferedReader br = new BufferedReader(new FileReader(file));
 						String s = null;
-						while ((s = br.readLine()) != null) {  // ÏÈ½«Ô­À´´æÔÚµÄĞÅÏ¢´æ´¢ÆğÀ´
+						while ((s = br.readLine()) != null) {  // å…ˆå°†åŸæ¥å­˜åœ¨çš„ä¿¡æ¯å­˜å‚¨èµ·æ¥
 							String[] result = s.split(" ");
 							
 							if(result[0].equals(idt.getText())){
@@ -227,9 +227,9 @@ public class DeleteUser extends JFrame implements ActionListener {
 					
 					
 					
-					JOptionPane.showMessageDialog(null, "É¾³ı½ÌÎñÔ±³É¹¦", "ÌáÊ¾", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "åˆ é™¤æ•™åŠ¡å‘˜æˆåŠŸ", "æç¤º", JOptionPane.INFORMATION_MESSAGE);
 				} else {
-					JOptionPane.showMessageDialog(null, "´Ë½ÌÎñÔ±²»´æÔÚ£¡", "ÌáÊ¾", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "æ­¤æ•™åŠ¡å‘˜ä¸å­˜åœ¨ï¼", "æç¤º", JOptionPane.INFORMATION_MESSAGE);
 				}
 
 			}

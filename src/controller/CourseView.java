@@ -14,43 +14,43 @@ import javax.swing.JTextArea;
 @SuppressWarnings("serial")
 public class CourseView extends JFrame {
   /*
-   * Ñ§Éú²éÑ¯¿Î³Ì£¬½ÌÊ¦²éÑ¯Ëù½ÌÊÚ¿Î³Ì
+   * å­¦ç”ŸæŸ¥è¯¢è¯¾ç¨‹ï¼Œæ•™å¸ˆæŸ¥è¯¢æ‰€æ•™æˆè¯¾ç¨‹
    */
 
   JPanel contain;
   JTextArea list;
 
   public CourseView(String id, int flag) {
-    super("¿Î³Ì");
+    super("è¯¾ç¨‹");
     setSize(330, 400);
     contain = new JPanel();
     setLocation(600, 400);
     list = new JTextArea();
     list.setEditable(false);
     contain.add(list);
-    list.append("¿Î³Ì±àºÅ\t¿Î³ÌÃû\tÑ§·Ö\tÑ§Ê±\n");
+    list.append("è¯¾ç¨‹ç¼–å·\tè¯¾ç¨‹å\tå­¦åˆ†\tå­¦æ—¶\n");
 
     String courseid;
     String coursename;
     String credit = null;
     String classhour = null;
 
-    if (flag == 0) { // Ñ§Éú²éÑ¯¿Î³Ì
+    if (flag == 0) { // å­¦ç”ŸæŸ¥è¯¢è¯¾ç¨‹
 
       // String path = "D://test//course_student";
       String path = System.getProperty("user.dir") + "/data/course_student";
-      List<String> files = new ArrayList<>(); // Ä¿Â¼ÏÂËùÓĞÎÄ¼ş
+      List<String> files = new ArrayList<>(); // ç›®å½•ä¸‹æ‰€æœ‰æ–‡ä»¶
       File file = new File(path);
       File[] tempList = file.listFiles();
 
       for (File element : tempList) {
         if (element.isFile()) {
           files.add(element.toString());
-          // ÎÄ¼şÃû£¬²»°üº¬Â·¾¶
+          // æ–‡ä»¶åï¼Œä¸åŒ…å«è·¯å¾„
           // String fileName = tempList[i].getName();
         }
         if (element.isDirectory()) {
-          // ÕâÀï¾Í²»µİ¹éÁË
+          // è¿™é‡Œå°±ä¸é€’å½’äº†
         }
       }
 
@@ -58,16 +58,16 @@ public class CourseView extends JFrame {
         for (String file2 : files) {
           BufferedReader br = new BufferedReader(new FileReader(file2));
           String s = null;
-          while ((s = br.readLine()) != null) {// Ê¹ÓÃreadLine·½·¨£¬Ò»´Î¶ÁÒ»ĞĞ
+          while ((s = br.readLine()) != null) {// ä½¿ç”¨readLineæ–¹æ³•ï¼Œä¸€æ¬¡è¯»ä¸€è¡Œ
             String[] result = s.split(" ");
-            if (result[2].equals(id)) { // Ñ§ÉúÑ§ºÅÏàµÈÊ±
+            if (result[2].equals(id)) { // å­¦ç”Ÿå­¦å·ç›¸ç­‰æ—¶
               courseid = result[0];
               coursename = result[1];
 
-              // ÏÈ²éÃ¿ÃÅ¿Î×¢²áÑ§ÉúÎÄ¼ş£¬ÔÙ²é¿Î³ÌĞÅÏ¢ÎÄ¼ş
+              // å…ˆæŸ¥æ¯é—¨è¯¾æ³¨å†Œå­¦ç”Ÿæ–‡ä»¶ï¼Œå†æŸ¥è¯¾ç¨‹ä¿¡æ¯æ–‡ä»¶
               String path1 = System.getProperty("user.dir") + "/data/course.txt";
-              BufferedReader br1 = new BufferedReader(new FileReader(path1)); // ¹¹ÔìÒ»¸öBufferedReaderÀàÀ´¶ÁÈ¡ÎÄ¼ş
-              while ((s = br1.readLine()) != null) { // Ê¹ÓÃreadLine·½·¨£¬Ò»´Î¶ÁÒ»ĞĞ
+              BufferedReader br1 = new BufferedReader(new FileReader(path1)); // æ„é€ ä¸€ä¸ªBufferedReaderç±»æ¥è¯»å–æ–‡ä»¶
+              while ((s = br1.readLine()) != null) { // ä½¿ç”¨readLineæ–¹æ³•ï¼Œä¸€æ¬¡è¯»ä¸€è¡Œ
                 String[] result1 = s.split(" ");
                 if (result[0].equals(result1[0])) {
                   credit = result1[2];
@@ -92,14 +92,14 @@ public class CourseView extends JFrame {
         e.printStackTrace();
       }
     }
-    else if (flag == 1) { // ½ÌÊ¦²éÑ¯×Ô¼º½ÌÊÚ¿Î³Ì
+    else if (flag == 1) { // æ•™å¸ˆæŸ¥è¯¢è‡ªå·±æ•™æˆè¯¾ç¨‹
       String path = System.getProperty("user.dir") + "/data/course.txt";
       // String path = "D://test//course.txt";
       String s = null;
 
       try {
         BufferedReader br = new BufferedReader(new FileReader(path));
-        while ((s = br.readLine()) != null) { // Ê¹ÓÃreadLine·½·¨£¬Ò»´Î¶ÁÒ»ĞĞ
+        while ((s = br.readLine()) != null) { // ä½¿ç”¨readLineæ–¹æ³•ï¼Œä¸€æ¬¡è¯»ä¸€è¡Œ
           String[] result = s.split(" ");
           if (result[4].equals(id)) {
             courseid = result[0];

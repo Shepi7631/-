@@ -1,22 +1,24 @@
 package model;
 
 public abstract class User {
-  private String id;
-  private String pwd;
+  private static String id;
+  private static String pwd;
   private String name;
+  private String status;
 
   public User() {
     super();
   }
 
-  public User(String id, String pwd, String name) {
+  public User(String id, String pwd, String name, String status) {
     super();
     this.id = id;
     this.pwd = pwd;
     this.name = name;
+    this.status = status;
   }
 
-  public String getId() {
+  public static String getId() {
     return id;
   }
 
@@ -24,7 +26,7 @@ public abstract class User {
     this.id = id;
   }
 
-  public String getPwd() {
+  public static String getPwd() {
     return pwd;
   }
 
@@ -39,5 +41,9 @@ public abstract class User {
   public void setName(String name) {
     this.name = name;
   }
+
+  public String getStatus() {return status;}
+
+  public void setStatus(String status) {this.status = status;}
 
 }

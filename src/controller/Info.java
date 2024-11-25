@@ -18,7 +18,7 @@ public class Info extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	JLabel idLabel, nameLabel, genderLabel, birLabel, insLabel, majorLabel;
-	String id, name, pwd, gender, birthday, institute, major;
+	String id, name, pwd, stutas,gender, birthday, institute, major;
 	JPanel stuInfoJPanel;
 	
 	Student stu;
@@ -58,7 +58,7 @@ public class Info extends JFrame {
 	            		major = result[6];
 	            		
 	            		if(flag == 1){
-	            			stu = new Student(id, pwd, name, gender, birthday, institute, major);
+	            			stu = new Student(id, pwd, name,stutas, gender, birthday, institute, major);
 	            			idLabel = new JLabel("账号:" + stu.getId());
 	            			nameLabel = new JLabel("姓名:" + stu.getName());
 	            			genderLabel = new JLabel("性别:" + stu.getSex());
@@ -66,7 +66,7 @@ public class Info extends JFrame {
 	            			insLabel = new JLabel("学院:" + stu.getInstitute());
 	            			majorLabel = new JLabel("系别:" + stu.getMajor());
 	            		}else{
-	            			t = new Teacher(id, pwd, name, gender, birthday, institute, major);
+	            			t = new Teacher(id, pwd, name, stutas,gender, birthday, institute, major);
 	            			idLabel = new JLabel("账号:" + t.getId());
 	            			nameLabel = new JLabel("姓名:" + t.getName());
 	            			genderLabel = new JLabel("性别:" + t.getSex());

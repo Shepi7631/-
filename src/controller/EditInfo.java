@@ -24,7 +24,7 @@ import javax.swing.JTextField;
 @SuppressWarnings("serial")
 public class EditInfo extends JFrame implements ActionListener {
 	/*
-	 * ÓÃ»§ĞŞ¸ÄĞÅÏ¢
+	 * ç”¨æˆ·ä¿®æ”¹ä¿¡æ¯
 	 */
 	String id;
 	JPanel contain;
@@ -36,23 +36,23 @@ public class EditInfo extends JFrame implements ActionListener {
 	int flag;
 
 	public EditInfo(String id, int flag) {
-		super("ĞŞ¸ÄĞÅÏ¢");
+		super("ä¿®æ”¹ä¿¡æ¯");
 		setSize(300, 420);
 		setLocation(600, 400);
 		this.id = id;
-		this.flag = flag; // flag=0ĞŞ¸ÄÑ§ÉúĞÅÏ¢£¬flag=1ĞŞ¸Ä½ÌÊ¦ĞÅÏ¢
+		this.flag = flag; // flag=0ä¿®æ”¹å­¦ç”Ÿä¿¡æ¯ï¼Œflag=1ä¿®æ”¹æ•™å¸ˆä¿¡æ¯
 		contain = new JPanel();
 		contain.setLayout(null);
-		name = new JLabel("ĞÕÃû");
-		birth = new JLabel("ÉúÈÕ");
-		inst = new JLabel("Ñ§Ôº");
-		major = new JLabel("×¨Òµ");
-		pass1 = new JLabel("ĞÂÃÜÂë");
-		pass2 = new JLabel("È·ÈÏÃÜÂë");
-		submit = new JButton("Ìá½»");
+		name = new JLabel("å§“å");
+		birth = new JLabel("ç”Ÿæ—¥");
+		inst = new JLabel("å­¦é™¢");
+		major = new JLabel("ä¸“ä¸š");
+		pass1 = new JLabel("æ–°å¯†ç ");
+		pass2 = new JLabel("ç¡®è®¤å¯†ç ");
+		submit = new JButton("æäº¤");
 		group = new CheckboxGroup();
-		check1 = new Checkbox("ÄĞ", group, true);
-		check2 = new Checkbox("Å®", group, false);
+		check1 = new Checkbox("ç”·", group, true);
+		check2 = new Checkbox("å¥³", group, false);
 		instt = new JTextField();
 		namet = new JTextField();
 		birtht = new JTextField();
@@ -101,14 +101,14 @@ public class EditInfo extends JFrame implements ActionListener {
 					|| (namet.getText().equals(""))
 					|| (pass1t.getText().equals(""))
 					|| (pass2t.getText().equals(""))) {
-				JOptionPane.showMessageDialog(null, "ĞÅÏ¢²»ÄÜÎª¿Õ£¡", "ÌáÊ¾",
+				JOptionPane.showMessageDialog(null, "ä¿¡æ¯ä¸èƒ½ä¸ºç©ºï¼", "æç¤º",
 						JOptionPane.INFORMATION_MESSAGE);
 			} else {
 				if (!(pass1t.getText().equals(pass2t.getText()))) {
-					JOptionPane.showMessageDialog(null, "ĞÂÃÜÂëÓëÈ·ÈÏÃÜÂë²»Í¬£¡", "ÌáÊ¾",
+					JOptionPane.showMessageDialog(null, "æ–°å¯†ç ä¸ç¡®è®¤å¯†ç ä¸åŒï¼", "æç¤º",
 							JOptionPane.INFORMATION_MESSAGE);
 				} else if (pass1t.getText().length() < 6) {
-					JOptionPane.showMessageDialog(null, "ÃÜÂë³¤¶ÈÖÁÉÙÎª6Î»£¡", "ÌáÊ¾",
+					JOptionPane.showMessageDialog(null, "å¯†ç é•¿åº¦è‡³å°‘ä¸º6ä½ï¼", "æç¤º",
 							JOptionPane.INFORMATION_MESSAGE);
 				} else {
 					String m;
@@ -118,7 +118,7 @@ public class EditInfo extends JFrame implements ActionListener {
 						m = "female";
 					}
 
-					if (flag == 0) { // Ñ§ÉúĞŞ¸ÄĞÅÏ¢
+					if (flag == 0) { // å­¦ç”Ÿä¿®æ”¹ä¿¡æ¯
 
 						ArrayList<String> modifiedContent = new ArrayList<String>();
 						String file = System.getProperty("user.dir")
@@ -133,7 +133,7 @@ public class EditInfo extends JFrame implements ActionListener {
 							while ((s = br.readLine()) != null) {
 								String[] result = s.split(" ");
 								if (result[0].equals(id)) {
-									result[0] = result[0]; // ºÅÂë²»ÄÜ¸ü¸Ä
+									result[0] = result[0]; // å·ç ä¸èƒ½æ›´æ”¹
 									result[1] = result[1].replace(result[1],
 											pass2t.getText());
 									result[2] = result[2].replace(result[2],
@@ -178,7 +178,7 @@ public class EditInfo extends JFrame implements ActionListener {
 							e1.printStackTrace();
 						}
 
-					} else if (flag == 1) { // ½ÌÊ¦ĞŞ¸ÄĞÅÏ¢
+					} else if (flag == 1) { // æ•™å¸ˆä¿®æ”¹ä¿¡æ¯
 
 						ArrayList<String> modifiedContent = new ArrayList<String>();
 						String file = System.getProperty("user.dir")
@@ -193,7 +193,7 @@ public class EditInfo extends JFrame implements ActionListener {
 							while ((s = br.readLine()) != null) {
 								String[] result = s.split(" ");
 								if (result[0].equals(id)) {
-									result[0] = result[0]; // ºÅÂë²»ÄÜ¸ü¸Ä
+									result[0] = result[0]; // å·ç ä¸èƒ½æ›´æ”¹
 									result[1] = result[1].replace(result[1],
 											pass2t.getText());
 									result[2] = result[2].replace(result[2],
@@ -237,7 +237,7 @@ public class EditInfo extends JFrame implements ActionListener {
 							e1.printStackTrace();
 						}
 
-					} else if (flag == 3) { // ½ÌÎñÔ±ĞŞ¸ÄĞÅÏ¢
+					} else if (flag == 3) { // æ•™åŠ¡å‘˜ä¿®æ”¹ä¿¡æ¯
 
 						ArrayList<String> modifiedContent = new ArrayList<String>();
 						String file = System.getProperty("user.dir")
@@ -252,7 +252,7 @@ public class EditInfo extends JFrame implements ActionListener {
 							while ((s = br.readLine()) != null) {
 								String[] result = s.split(" ");
 								if (result[0].equals(id)) {
-									result[0] = result[0]; // ºÅÂë²»ÄÜ¸ü¸Ä
+									result[0] = result[0]; // å·ç ä¸èƒ½æ›´æ”¹
 									result[1] = result[1].replace(result[1],
 											pass2t.getText());
 									result[2] = result[2].replace(result[2],
@@ -298,7 +298,7 @@ public class EditInfo extends JFrame implements ActionListener {
 
 					}
 
-					JOptionPane.showMessageDialog(null, "ĞŞ¸Ä³É¹¦£¡", "ÌáÊ¾",
+					JOptionPane.showMessageDialog(null, "ä¿®æ”¹æˆåŠŸï¼", "æç¤º",
 							JOptionPane.INFORMATION_MESSAGE);
 				}
 			}

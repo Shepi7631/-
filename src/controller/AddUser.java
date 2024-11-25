@@ -21,54 +21,54 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-// SuppressWarningsÓÃÓÚÒÖÖÆ¡°serial¡±¾¯¸æ£¨JFrameÀàÊµÏÖÁËSerializable½Ó¿Ú£©
+// SuppressWarningsç”¨äºæŠ‘åˆ¶â€œserialâ€è­¦å‘Šï¼ˆJFrameç±»å®ç°äº†Serializableæ¥å£ï¼‰
 @SuppressWarnings("serial")
 public class AddUser extends JFrame implements ActionListener {
   /*
-   * ½ÌÎñ¹ÜÀíÔ±Ìí¼ÓÓÃ»§¹¦ÄÜ£¬¿ÉÒÔÌí¼ÓÑ§Éú¡¢½ÌÊ¦¡¢½ÌÎñÔ±
+   * æ•™åŠ¡ç®¡ç†å‘˜æ·»åŠ ç”¨æˆ·åŠŸèƒ½ï¼Œå¯ä»¥æ·»åŠ å­¦ç”Ÿã€æ•™å¸ˆã€æ•™åŠ¡å‘˜
    */
 
-  // ¶¨Òå½çÃæ×é¼ş
+  // å®šä¹‰ç•Œé¢ç»„ä»¶
   JPanel contain;
   JLabel id, name, birthday, institute, major;
   JTextField idt, namet, birthdayt, institutet, majort;
-  Checkbox check1, check2; // ÓÃÓÚÑ¡ÔñĞÔ±ğ
-  CheckboxGroup group; // ·Ö×éĞÔ±ğÑ¡Ïî
+  Checkbox check1, check2; // ç”¨äºé€‰æ‹©æ€§åˆ«
+  CheckboxGroup group; // åˆ†ç»„æ€§åˆ«é€‰é¡¹
   JButton submit;
-  Choice chooice; // ÓÃÓÚÑ¡ÔñÓÃ»§ÀàĞÍ£¨Ñ§Éú¡¢½ÌÊ¦¡¢½ÌÎñÔ±£©
-  String file = System.getProperty("user.dir") + "/data/"; // Êı¾İ´æ´¢Â·¾¶
+  Choice chooice; // ç”¨äºé€‰æ‹©ç”¨æˆ·ç±»å‹ï¼ˆå­¦ç”Ÿã€æ•™å¸ˆã€æ•™åŠ¡å‘˜ï¼‰
+  String file = System.getProperty("user.dir") + "/data/"; // æ•°æ®å­˜å‚¨è·¯å¾„
 
-  // ¹¹Ôì·½·¨£º³õÊ¼»¯´°¿ÚºÍ×é¼ş
+  // æ„é€ æ–¹æ³•ï¼šåˆå§‹åŒ–çª—å£å’Œç»„ä»¶
   public AddUser() {
-    super("Ìí¼ÓÓÃ»§"); // ÉèÖÃ´°¿Ú±êÌâ
-    setSize(300, 350); // ÉèÖÃ´°¿Ú´óĞ¡
-    setLocation(600, 400); // ÉèÖÃ´°¿ÚÎ»ÖÃ
+    super("æ·»åŠ ç”¨æˆ·"); // è®¾ç½®çª—å£æ ‡é¢˜
+    setSize(300, 350); // è®¾ç½®çª—å£å¤§å°
+    setLocation(600, 400); // è®¾ç½®çª—å£ä½ç½®
     contain = new JPanel();
     contain.setLayout(null);
 
-    // ³õÊ¼»¯×é¼ş
-    id = new JLabel("ÕÊºÅ");
-    name = new JLabel("ĞÕÃû");
+    // åˆå§‹åŒ–ç»„ä»¶
+    id = new JLabel("å¸å·");
+    name = new JLabel("å§“å");
     group = new CheckboxGroup();
-    check1 = new Checkbox("ÄĞ", group, true);
-    check2 = new Checkbox("Å®", group, false);
-    birthday = new JLabel("ÉúÈÕ");
-    institute = new JLabel("Ñ§Ôº");
-    major = new JLabel("×¨Òµ");
-    submit = new JButton("Ìá½»");
-    chooice = new Choice(); // ÏÂÀ­ÁĞ±í
-    chooice.addItem("Ñ§Éú");
-    chooice.addItem("½ÌÊ¦");
-    chooice.addItem("½ÌÎñÔ±");
+    check1 = new Checkbox("ç”·", group, true);
+    check2 = new Checkbox("å¥³", group, false);
+    birthday = new JLabel("ç”Ÿæ—¥");
+    institute = new JLabel("å­¦é™¢");
+    major = new JLabel("ä¸“ä¸š");
+    submit = new JButton("æäº¤");
+    chooice = new Choice(); // ä¸‹æ‹‰åˆ—è¡¨
+    chooice.addItem("å­¦ç”Ÿ");
+    chooice.addItem("æ•™å¸ˆ");
+    chooice.addItem("æ•™åŠ¡å‘˜");
 
-    // ³õÊ¼»¯ÊäÈë¿ò
+    // åˆå§‹åŒ–è¾“å…¥æ¡†
     idt = new JTextField();
     namet = new JTextField();
     birthdayt = new JTextField();
     institutet = new JTextField();
     majort = new JTextField();
 
-    // ÉèÖÃ×é¼şÎ»ÖÃ
+    // è®¾ç½®ç»„ä»¶ä½ç½®
     id.setBounds(42, 45, 75, 35);
     idt.setBounds(80, 45, 150, 35);
     name.setBounds(42, 20, 75, 35);
@@ -84,7 +84,7 @@ public class AddUser extends JFrame implements ActionListener {
     chooice.setBounds(80, 180, 150, 35);
     submit.setBounds(102, 260, 70, 30);
 
-    // Ìí¼Ó×é¼şµ½Ãæ°å
+    // æ·»åŠ ç»„ä»¶åˆ°é¢æ¿
     contain.add(id);
     contain.add(idt);
     contain.add(name);
@@ -100,43 +100,43 @@ public class AddUser extends JFrame implements ActionListener {
     contain.add(chooice);
     contain.add(submit);
 
-    // Ìí¼Ó°´Å¥¼àÌıÆ÷
+    // æ·»åŠ æŒ‰é’®ç›‘å¬å™¨
     submit.addActionListener(this);
-    add(contain); // ½«Ãæ°åÌí¼Óµ½´°¿Ú
-    setVisible(true); // ÉèÖÃ´°¿Ú¿É¼û
-    enableEvents(AWTEvent.WINDOW_EVENT_MASK); // ÆôÓÃ´°¿ÚÊÂ¼ş´¦Àí
+    add(contain); // å°†é¢æ¿æ·»åŠ åˆ°çª—å£
+    setVisible(true); // è®¾ç½®çª—å£å¯è§
+    enableEvents(AWTEvent.WINDOW_EVENT_MASK); // å¯ç”¨çª—å£äº‹ä»¶å¤„ç†
   }
 
   @Override
   public void actionPerformed(ActionEvent e) {
-    if (e.getSource() == submit) { // Ìá½»°´Å¥µã»÷ÊÂ¼ş
-      // ¼ì²éÊäÈë¿òÊÇ·ñÎª¿Õ
+    if (e.getSource() == submit) { // æäº¤æŒ‰é’®ç‚¹å‡»äº‹ä»¶
+      // æ£€æŸ¥è¾“å…¥æ¡†æ˜¯å¦ä¸ºç©º
       if (idt.getText().equals("") || namet.getText().equals("") || birthdayt.getText().equals("")
               || institutet.getText().equals("") || majort.getText().equals("")) {
-        JOptionPane.showMessageDialog(null, "ĞÅÏ¢²»ÄÜÎª¿Õ£¡", "ÌáÊ¾", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "ä¿¡æ¯ä¸èƒ½ä¸ºç©ºï¼", "æç¤º", JOptionPane.INFORMATION_MESSAGE);
       } else {
-        String ch = chooice.getSelectedItem(); // »ñÈ¡Ñ¡ÔñµÄÓÃ»§ÀàĞÍ
-        if (ch.equals("Ñ§Éú")) { // Ñ§ÉúÓÃ»§
-          handleUser("student", "Ñ§Éú");
-        } else if (ch.equals("½ÌÊ¦")) { // ½ÌÊ¦ÓÃ»§
-          handleUser("teacher", "½ÌÊ¦");
-        } else { // ½ÌÎñÔ±ÓÃ»§
-          handleUser("administrator", "½ÌÎñÔ±");
+        String ch = chooice.getSelectedItem(); // è·å–é€‰æ‹©çš„ç”¨æˆ·ç±»å‹
+        if (ch.equals("å­¦ç”Ÿ")) { // å­¦ç”Ÿç”¨æˆ·
+          handleUser("student", "å­¦ç”Ÿ");
+        } else if (ch.equals("æ•™å¸ˆ")) { // æ•™å¸ˆç”¨æˆ·
+          handleUser("teacher", "æ•™å¸ˆ");
+        } else { // æ•™åŠ¡å‘˜ç”¨æˆ·
+          handleUser("administrator", "æ•™åŠ¡å‘˜");
         }
       }
     }
   }
 
-  // Í¨ÓÃ·½·¨£º´¦ÀíÌí¼ÓÓÃ»§Âß¼­
+  // é€šç”¨æ–¹æ³•ï¼šå¤„ç†æ·»åŠ ç”¨æˆ·é€»è¾‘
   private void handleUser(String userType, String userName) {
     if (new CheckInfo().isMember(userType, idt.getText(), namet.getText()) == 2) {
-      // ¼ì²éÓÃ»§ÊÇ·ñÒÑ´æÔÚ
-      JOptionPane.showMessageDialog(null, "´Ë" + userName + "ÒÑ¾­´æÔÚ£¡", "ÌáÊ¾", JOptionPane.INFORMATION_MESSAGE);
+      // æ£€æŸ¥ç”¨æˆ·æ˜¯å¦å·²å­˜åœ¨
+      JOptionPane.showMessageDialog(null, "æ­¤" + userName + "å·²ç»å­˜åœ¨ï¼", "æç¤º", JOptionPane.INFORMATION_MESSAGE);
     } else {
-      file = file.concat(userType + ".txt"); // È·¶¨¶ÔÓ¦µÄÎÄ¼şÂ·¾¶
+      file = file.concat(userType + ".txt"); // ç¡®å®šå¯¹åº”çš„æ–‡ä»¶è·¯å¾„
       ArrayList<String> modifiedContent = new ArrayList<>();
 
-      // ¶ÁÈ¡ÎÄ¼şÄÚÈİ
+      // è¯»å–æ–‡ä»¶å†…å®¹
       try (BufferedReader br = new BufferedReader(new FileReader(file))) {
         String s;
         while ((s = br.readLine()) != null) {
@@ -146,15 +146,15 @@ public class AddUser extends JFrame implements ActionListener {
         e.printStackTrace();
       }
 
-      // »ñÈ¡ĞÔ±ğ
+      // è·å–æ€§åˆ«
       String m = check1.getState() ? "male" : "female";
 
-      // Ìí¼ÓÓÃ»§ĞÅÏ¢
+      // æ·»åŠ ç”¨æˆ·ä¿¡æ¯
       String user = idt.getText() + " " + "123456" + " " + namet.getText() + " " + m + " " + birthdayt.getText() + " "
               + institutet.getText() + " " + majort.getText();
       modifiedContent.add(user);
 
-      // Ğ´ÈëÎÄ¼ş
+      // å†™å…¥æ–‡ä»¶
       try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
         for (String element : modifiedContent) {
           bw.write(element);
@@ -164,16 +164,16 @@ public class AddUser extends JFrame implements ActionListener {
         e.printStackTrace();
       }
 
-      // ÌáÊ¾Ìí¼Ó³É¹¦
-      JOptionPane.showMessageDialog(null, "³É¹¦Ìí¼ÓÒ»¸ö" + userName + "£¡", "ÌáÊ¾", JOptionPane.INFORMATION_MESSAGE);
+      // æç¤ºæ·»åŠ æˆåŠŸ
+      JOptionPane.showMessageDialog(null, "æˆåŠŸæ·»åŠ ä¸€ä¸ª" + userName + "ï¼", "æç¤º", JOptionPane.INFORMATION_MESSAGE);
     }
   }
 
   @Override
   public void processWindowEvent(WindowEvent e) {
-    if (e.getID() == WindowEvent.WINDOW_CLOSING) { // ¹Ø±Õ´°¿ÚÊÂ¼ş
-      this.dispose(); // Ïú»Ù´°¿Ú
-      setVisible(false); // ÉèÖÃ´°¿Ú²»¿É¼û
+    if (e.getID() == WindowEvent.WINDOW_CLOSING) { // å…³é—­çª—å£äº‹ä»¶
+      this.dispose(); // é”€æ¯çª—å£
+      setVisible(false); // è®¾ç½®çª—å£ä¸å¯è§
     }
   }
 }

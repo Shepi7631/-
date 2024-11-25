@@ -1,6 +1,6 @@
 package controller;
 
-// µ¼Èë±ØÒªµÄÀàºÍ°ü
+// å¯¼å…¥å¿…è¦çš„ç±»å’ŒåŒ…
 import java.awt.AWTEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,52 +22,52 @@ import javax.swing.JTextField;
 
 import model.Course;
 
-// SuppressWarningsÓÃÓÚÒÖÖÆ¡°serial¡±¾¯¸æ£¨JFrameÀàÊµÏÖÁËSerializable½Ó¿Ú£©
+// SuppressWarningsç”¨äºæŠ‘åˆ¶â€œserialâ€è­¦å‘Šï¼ˆJFrameç±»å®ç°äº†Serializableæ¥å£ï¼‰
 @SuppressWarnings("serial")
 public class AddCourse extends JFrame implements ActionListener {
   /*
-   * ½ÌÊ¦Ôö¼Ó¿Î³Ì¹¦ÄÜ
+   * æ•™å¸ˆå¢åŠ è¯¾ç¨‹åŠŸèƒ½
    */
   /*
-×Ü½á
-¹¦ÄÜÃèÊö£º
-¸Ã´úÂëÊµÏÖÁË½ÌÊ¦Ôö¼Ó¿Î³ÌµÄ¹¦ÄÜ£¬Í¨¹ıÍ¼ĞÎ½çÃæÊäÈë¿Î³ÌĞÅÏ¢£¬²¢½«ĞÅÏ¢±£´æµ½ÎÄ¼şÖĞ¡£
-ÊäÈëĞ£Ñé£º
-¼ì²éÊäÈë¿ò²»ÄÜÎª¿Õ¡£
-¼ì²é¿Î³ÌÊÇ·ñÒÑ´æÔÚ¡£
-ÎÄ¼ş²Ù×÷£º
-¶ÁÈ¡ºÍĞ´Èë¿Î³ÌĞÅÏ¢µ½ÎÄ¼ş¡£
-ÎªĞÂÔö¿Î³Ì´´½¨Ïà¹ØµÄ³É¼¨ÎÄ¼şºÍÑ§ÉúÎÄ¼ş¡£
-½çÃæ½»»¥£º
-Ê¹ÓÃJOptionPaneÌáÊ¾ÓÃ»§²Ù×÷½á¹û¡£
-Ê¹ÓÃJTextField»ñÈ¡ÓÃ»§ÊäÈë¡£
+æ€»ç»“
+åŠŸèƒ½æè¿°ï¼š
+è¯¥ä»£ç å®ç°äº†æ•™å¸ˆå¢åŠ è¯¾ç¨‹çš„åŠŸèƒ½ï¼Œé€šè¿‡å›¾å½¢ç•Œé¢è¾“å…¥è¯¾ç¨‹ä¿¡æ¯ï¼Œå¹¶å°†ä¿¡æ¯ä¿å­˜åˆ°æ–‡ä»¶ä¸­ã€‚
+è¾“å…¥æ ¡éªŒï¼š
+æ£€æŸ¥è¾“å…¥æ¡†ä¸èƒ½ä¸ºç©ºã€‚
+æ£€æŸ¥è¯¾ç¨‹æ˜¯å¦å·²å­˜åœ¨ã€‚
+æ–‡ä»¶æ“ä½œï¼š
+è¯»å–å’Œå†™å…¥è¯¾ç¨‹ä¿¡æ¯åˆ°æ–‡ä»¶ã€‚
+ä¸ºæ–°å¢è¯¾ç¨‹åˆ›å»ºç›¸å…³çš„æˆç»©æ–‡ä»¶å’Œå­¦ç”Ÿæ–‡ä»¶ã€‚
+ç•Œé¢äº¤äº’ï¼š
+ä½¿ç”¨JOptionPaneæç¤ºç”¨æˆ·æ“ä½œç»“æœã€‚
+ä½¿ç”¨JTextFieldè·å–ç”¨æˆ·è¾“å…¥ã€‚
 */
 
 
-  // ¶¨Òå½çÃæ×é¼ş
+  // å®šä¹‰ç•Œé¢ç»„ä»¶
   JPanel contain;
   JButton submit;
   JLabel id, name, gredit, classH, teacherId, teacherName;
   JTextField idt, namet, greditt, classHt, teacherIdt, teacherNamet;
 
-  // ¹¹Ôì·½·¨£¬³õÊ¼»¯´°¿ÚºÍ×é¼ş
+  // æ„é€ æ–¹æ³•ï¼Œåˆå§‹åŒ–çª—å£å’Œç»„ä»¶
   public AddCourse() {
-    super("Ôö¼Ó¿Î³Ì"); // ÉèÖÃ´°¿Ú±êÌâ
-    setSize(400, 400); // ÉèÖÃ´°¿Ú´óĞ¡
-    setLocation(600, 400); // ÉèÖÃ´°¿ÚÎ»ÖÃ
-    contain = new JPanel(); // ³õÊ¼»¯Ãæ°å
-    contain.setLayout(null); // ÉèÖÃ²¼¾ÖÎª¿Õ²¼¾Ö
+    super("å¢åŠ è¯¾ç¨‹"); // è®¾ç½®çª—å£æ ‡é¢˜
+    setSize(400, 400); // è®¾ç½®çª—å£å¤§å°
+    setLocation(600, 400); // è®¾ç½®çª—å£ä½ç½®
+    contain = new JPanel(); // åˆå§‹åŒ–é¢æ¿
+    contain.setLayout(null); // è®¾ç½®å¸ƒå±€ä¸ºç©ºå¸ƒå±€
 
-    // ³õÊ¼»¯±êÇ©
-    id = new JLabel("¿Î³ÌºÅ");
-    name = new JLabel("¿Î³ÌÃû");
-    gredit = new JLabel("Ñ§·Ö");
-    classH = new JLabel("Ñ§Ê±");
-    teacherId = new JLabel("½ÌÊ¦");
-    teacherName = new JLabel("½ÌÊ¦ºÅ");
+    // åˆå§‹åŒ–æ ‡ç­¾
+    id = new JLabel("è¯¾ç¨‹å·");
+    name = new JLabel("è¯¾ç¨‹å");
+    gredit = new JLabel("å­¦åˆ†");
+    classH = new JLabel("å­¦æ—¶");
+    teacherId = new JLabel("æ•™å¸ˆ");
+    teacherName = new JLabel("æ•™å¸ˆå·");
 
-    // ³õÊ¼»¯°´Å¥ºÍÎÄ±¾¿ò
-    submit = new JButton("Ìá½»");
+    // åˆå§‹åŒ–æŒ‰é’®å’Œæ–‡æœ¬æ¡†
+    submit = new JButton("æäº¤");
     idt = new JTextField();
     namet = new JTextField();
     greditt = new JTextField();
@@ -75,7 +75,7 @@ public class AddCourse extends JFrame implements ActionListener {
     teacherIdt = new JTextField();
     teacherNamet = new JTextField();
 
-    // ÉèÖÃ×é¼şÎ»ÖÃ
+    // è®¾ç½®ç»„ä»¶ä½ç½®
     id.setBounds(42, 35, 75, 35);
     idt.setBounds(80, 35, 150, 35);
     name.setBounds(40, 90, 75, 35);
@@ -90,7 +90,7 @@ public class AddCourse extends JFrame implements ActionListener {
     teacherNamet.setBounds(80, 280, 75, 35);
     submit.setBounds(102, 320, 70, 30);
 
-    // Ìí¼Ó×é¼şµ½Ãæ°å
+    // æ·»åŠ ç»„ä»¶åˆ°é¢æ¿
     contain.add(id);
     contain.add(idt);
     contain.add(name);
@@ -105,67 +105,67 @@ public class AddCourse extends JFrame implements ActionListener {
     contain.add(teacherNamet);
     contain.add(submit);
 
-    // Ìí¼Ó°´Å¥¼àÌıÆ÷
+    // æ·»åŠ æŒ‰é’®ç›‘å¬å™¨
     submit.addActionListener(this);
-    add(contain); // ½«Ãæ°åÌí¼Óµ½´°¿Ú
-    setVisible(true); // ÉèÖÃ´°¿Ú¿É¼û
-    enableEvents(AWTEvent.WINDOW_EVENT_MASK); // ÆôÓÃ´°¿ÚÊÂ¼ş´¦Àí
+    add(contain); // å°†é¢æ¿æ·»åŠ åˆ°çª—å£
+    setVisible(true); // è®¾ç½®çª—å£å¯è§
+    enableEvents(AWTEvent.WINDOW_EVENT_MASK); // å¯ç”¨çª—å£äº‹ä»¶å¤„ç†
   }
 
-  // ¼ì²é¿Î³ÌÊÇ·ñÒÑ¾­´æÔÚ
+  // æ£€æŸ¥è¯¾ç¨‹æ˜¯å¦å·²ç»å­˜åœ¨
   public int hasCourse(String id) {
-    String file = System.getProperty("user.dir") + "/data/course.txt"; // »ñÈ¡¿Î³ÌÎÄ¼şÂ·¾¶
+    String file = System.getProperty("user.dir") + "/data/course.txt"; // è·å–è¯¾ç¨‹æ–‡ä»¶è·¯å¾„
     try {
-      BufferedReader br = new BufferedReader(new FileReader(file)); // ´´½¨BufferedReader¶ÁÈ¡ÎÄ¼ş
+      BufferedReader br = new BufferedReader(new FileReader(file)); // åˆ›å»ºBufferedReaderè¯»å–æ–‡ä»¶
       String s = null;
-      while ((s = br.readLine()) != null) { // °´ĞĞ¶ÁÈ¡ÎÄ¼ş
-        String[] result = s.split(" "); // °´¿Õ¸ñ·Ö¸î×Ö¶Î
-        if (result[0].equals(id)) { // ¼ì²é¿Î³ÌºÅÊÇ·ñÆ¥Åä
+      while ((s = br.readLine()) != null) { // æŒ‰è¡Œè¯»å–æ–‡ä»¶
+        String[] result = s.split(" "); // æŒ‰ç©ºæ ¼åˆ†å‰²å­—æ®µ
+        if (result[0].equals(id)) { // æ£€æŸ¥è¯¾ç¨‹å·æ˜¯å¦åŒ¹é…
           br.close();
-          return 1; // Èç¹û¿Î³ÌÒÑ´æÔÚ£¬·µ»Ø1
+          return 1; // å¦‚æœè¯¾ç¨‹å·²å­˜åœ¨ï¼Œè¿”å›1
         }
       }
       br.close();
     } catch (Exception e) {
-      e.printStackTrace(); // Òì³£´¦Àí
+      e.printStackTrace(); // å¼‚å¸¸å¤„ç†
     }
-    return 0; // Èç¹û¿Î³Ì²»´æÔÚ£¬·µ»Ø0
+    return 0; // å¦‚æœè¯¾ç¨‹ä¸å­˜åœ¨ï¼Œè¿”å›0
   }
 
   @Override
   public void actionPerformed(ActionEvent e) {
-    if (e.getSource() == submit) { // Èç¹ûµã»÷ÁËÌá½»°´Å¥
-      // ¼ì²éÊäÈë¿òÊÇ·ñÎª¿Õ
+    if (e.getSource() == submit) { // å¦‚æœç‚¹å‡»äº†æäº¤æŒ‰é’®
+      // æ£€æŸ¥è¾“å…¥æ¡†æ˜¯å¦ä¸ºç©º
       if (idt.getText().equals("") || namet.getText().equals("") || greditt.getText().equals("")
               || classHt.getText().equals("") || teacherIdt.getText().equals("") || teacherNamet.getText().equals("")) {
-        JOptionPane.showMessageDialog(null, "ĞÅÏ¢²»ÄÜÎª¿Õ£¡", "ÌáÊ¾", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "ä¿¡æ¯ä¸èƒ½ä¸ºç©ºï¼", "æç¤º", JOptionPane.INFORMATION_MESSAGE);
       } else {
-        // ¼ì²é¿Î³ÌÊÇ·ñ´æÔÚ
+        // æ£€æŸ¥è¯¾ç¨‹æ˜¯å¦å­˜åœ¨
         if (hasCourse(idt.getText()) == 1) {
-          JOptionPane.showMessageDialog(null, "´Ë¿Î³ÌÒÑ¾­´æÔÚ£¡", "ÌáÊ¾", JOptionPane.INFORMATION_MESSAGE);
+          JOptionPane.showMessageDialog(null, "æ­¤è¯¾ç¨‹å·²ç»å­˜åœ¨ï¼", "æç¤º", JOptionPane.INFORMATION_MESSAGE);
         } else {
-          String file = System.getProperty("user.dir") + "/data/course.txt"; // »ñÈ¡¿Î³ÌÎÄ¼şÂ·¾¶
-          ArrayList<String> modifiedContent = new ArrayList<>(); // ´æ´¢ÎÄ¼şµÄ¸üĞÂÄÚÈİ
+          String file = System.getProperty("user.dir") + "/data/course.txt"; // è·å–è¯¾ç¨‹æ–‡ä»¶è·¯å¾„
+          ArrayList<String> modifiedContent = new ArrayList<>(); // å­˜å‚¨æ–‡ä»¶çš„æ›´æ–°å†…å®¹
           try {
             BufferedReader br = new BufferedReader(new FileReader(file));
             String s = null;
-            while ((s = br.readLine()) != null) { // ¶ÁÈ¡ÒÑÓĞÎÄ¼şÄÚÈİ
-              modifiedContent.add(s); // Ìí¼Óµ½Êı×éÁĞ±í
+            while ((s = br.readLine()) != null) { // è¯»å–å·²æœ‰æ–‡ä»¶å†…å®¹
+              modifiedContent.add(s); // æ·»åŠ åˆ°æ•°ç»„åˆ—è¡¨
             }
             br.close();
           } catch (Exception e1) {
             e1.printStackTrace();
           }
 
-          // ´´½¨ĞÂµÄ¿Î³Ì¶ÔÏó
+          // åˆ›å»ºæ–°çš„è¯¾ç¨‹å¯¹è±¡
           Course course = new Course(idt.getText(), namet.getText(), greditt.getText(), classHt.getText(),
                   teacherIdt.getText(), teacherNamet.getText());
 
-          // Ìí¼ÓĞÂ¿Î³ÌµÄĞÅÏ¢
+          // æ·»åŠ æ–°è¯¾ç¨‹çš„ä¿¡æ¯
           modifiedContent.add(course.getCourseId() + " " + course.getCourseName() + " " + course.getCredit() + " "
                   + course.getHour() + " " + course.getTeacherId() + " " + course.getTeacherName());
 
-          // ½«¸üĞÂºóµÄÄÚÈİĞ´»ØÎÄ¼ş
+          // å°†æ›´æ–°åçš„å†…å®¹å†™å›æ–‡ä»¶
           try {
             FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -179,13 +179,13 @@ public class AddCourse extends JFrame implements ActionListener {
             e1.printStackTrace();
           }
 
-          // ´´½¨Óë¿Î³ÌÏà¹ØµÄÎÄ¼ş
+          // åˆ›å»ºä¸è¯¾ç¨‹ç›¸å…³çš„æ–‡ä»¶
           File gradeFile = new File(System.getProperty("user.dir") + "/data/grade" + course.getCourseName() + ".txt");
           File studentFile = new File(System.getProperty("user.dir") + "/data/course_student" + course.getCourseName()
                   + "_student.txt");
 
-          // ÌáÊ¾Ìí¼Ó³É¹¦
-          JOptionPane.showMessageDialog(null, "Ìí¼Ó³É¹¦", "ÌáÊ¾", JOptionPane.INFORMATION_MESSAGE);
+          // æç¤ºæ·»åŠ æˆåŠŸ
+          JOptionPane.showMessageDialog(null, "æ·»åŠ æˆåŠŸ", "æç¤º", JOptionPane.INFORMATION_MESSAGE);
         }
       }
     }
@@ -193,9 +193,9 @@ public class AddCourse extends JFrame implements ActionListener {
 
   @Override
   public void processWindowEvent(WindowEvent e) {
-    if (e.getID() == WindowEvent.WINDOW_CLOSING) { // Èç¹ûÊÇ¹Ø±Õ´°¿ÚÊÂ¼ş
-      this.dispose(); // Ïú»Ù´°¿Ú
-      setVisible(false); // ÉèÖÃ´°¿Ú²»¿É¼û
+    if (e.getID() == WindowEvent.WINDOW_CLOSING) { // å¦‚æœæ˜¯å…³é—­çª—å£äº‹ä»¶
+      this.dispose(); // é”€æ¯çª—å£
+      setVisible(false); // è®¾ç½®çª—å£ä¸å¯è§
     }
   }
 }

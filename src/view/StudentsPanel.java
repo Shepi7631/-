@@ -19,24 +19,24 @@ import controller.Info;
 @SuppressWarnings("serial")
 public class StudentsPanel extends JFrame implements ActionListener {
 	/*
-	 * 学生登陆后操作主界面
+	 * 瀛︾敓鐧婚檰鍚庢搷浣滀富鐣岄潰
 	 */
 	JPanel contain;
 	String id;
 	JButton infoButton, gradeButton, courseButton, editButton;
 
 	public StudentsPanel(String id) {
-		super("学生");
+		super("瀛︾敓");
 		this.id = id;
 		setLocation(300, 200);
 		setSize(300, 340);
 		contain = new JPanel();
 		contain.setLayout(null);
 		add(contain);
-		infoButton = new JButton("信息查询");
-		gradeButton = new JButton("成绩查询");
-		courseButton = new JButton("课程查询");
-		editButton = new JButton("修改信息");
+		infoButton = new JButton("淇℃伅鏌ヨ");
+		gradeButton = new JButton("鎴愮哗鏌ヨ");
+		courseButton = new JButton("璇剧▼鏌ヨ");
+		editButton = new JButton("淇敼淇℃伅");
 		infoButton.setBounds(70, 40, 140, 30);
 		gradeButton.setBounds(70, 80, 140, 30);
 		courseButton.setBounds(70, 120, 140, 30);

@@ -10,7 +10,7 @@ import javax.swing.JTextArea;
 
 public class GradeInfo extends JFrame { 
 	/**
-	 * Ñ§Éú¸ù¾İÑ§ºÅ²éÑ¯ËùÓĞ³É¼¨
+	 * å­¦ç”Ÿæ ¹æ®å­¦å·æŸ¥è¯¢æ‰€æœ‰æˆç»©
 	 */
 	private static final long serialVersionUID = 1L;
 	JPanel contain;
@@ -27,7 +27,7 @@ public class GradeInfo extends JFrame {
 	
 
 	public GradeInfo(String id) {
-		super("¿Î³Ì");
+		super("è¯¾ç¨‹");
 		this.id = id;
 		setSize(600, 400);
 		contain = new JPanel();
@@ -36,29 +36,29 @@ public class GradeInfo extends JFrame {
 		list.setEditable(false);
 		contain.add(list);
 		
-		list.append("¿Î³ÌºÅ" + "\t");
-		list.append("¿Î³ÌÃû" + "\t");
-		list.append("½ÌÊ¦¹¤ºÅ" + "\t");
-		list.append("½ÌÊ¦ĞÕÃû" + "\t");
-		list.append("Ñ§ºÅ" + "\t");
-		list.append("Ñ§ÉúĞÕÃû" + "\t");
-		list.append("³É¼¨" + "\n");
+		list.append("è¯¾ç¨‹å·" + "\t");
+		list.append("è¯¾ç¨‹å" + "\t");
+		list.append("æ•™å¸ˆå·¥å·" + "\t");
+		list.append("æ•™å¸ˆå§“å" + "\t");
+		list.append("å­¦å·" + "\t");
+		list.append("å­¦ç”Ÿå§“å" + "\t");
+		list.append("æˆç»©" + "\n");
 
 		// String path = "D://test//grade";
 		String path = System.getProperty("user.dir")+"/data/grade";
 
-		List<String> files = new ArrayList<String>(); // Ä¿Â¼ÏÂËùÓĞÎÄ¼ş
+		List<String> files = new ArrayList<String>(); // ç›®å½•ä¸‹æ‰€æœ‰æ–‡ä»¶
 		File file = new File(path);
 		File[] tempList = file.listFiles();
 
 		for (int i = 0; i < tempList.length; i++) {
 			if (tempList[i].isFile()) {
 				files.add(tempList[i].toString());
-				// ÎÄ¼şÃû£¬²»°üº¬Â·¾¶
+				// æ–‡ä»¶åï¼Œä¸åŒ…å«è·¯å¾„
 				// String fileName = tempList[i].getName();
 			}
 			if (tempList[i].isDirectory()) {
-				// ÕâÀï¾Í²»µİ¹éÁË£¬
+				// è¿™é‡Œå°±ä¸é€’å½’äº†ï¼Œ
 			}
 		}
 
@@ -67,9 +67,9 @@ public class GradeInfo extends JFrame {
 				BufferedReader br = new BufferedReader(new FileReader(
 						files.get(i)));
 				String s = null;
-				while ((s = br.readLine()) != null) {// Ê¹ÓÃreadLine·½·¨£¬Ò»´Î¶ÁÒ»ĞĞ
+				while ((s = br.readLine()) != null) {// ä½¿ç”¨readLineæ–¹æ³•ï¼Œä¸€æ¬¡è¯»ä¸€è¡Œ
 					String[] result = s.split(" ");
-					if (result[4].equals(id)) { // Ñ§ÉúÑ§ºÅÏàµÈÊ±
+					if (result[4].equals(id)) { // å­¦ç”Ÿå­¦å·ç›¸ç­‰æ—¶
 						courseid = result[0];
 						coursename = result[1];
 						teacherid = result[2];

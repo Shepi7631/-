@@ -18,7 +18,7 @@ import controller.Info;
 @SuppressWarnings("serial")
 public class TeachersPanel extends JFrame implements ActionListener {
   /*
-   * ½ÌÊ¦µÇÂ½ºó²Ù×÷Ö÷½çÃæ
+   * æ•™å¸ˆç™»é™†åæ“ä½œä¸»ç•Œé¢
    */
 
   String idd;
@@ -26,19 +26,19 @@ public class TeachersPanel extends JFrame implements ActionListener {
   JButton infoButton, gradeButton, courseButton, editButton, courseView, sortGrade;
 
   public TeachersPanel(String idd) {
-    super("½ÌÊ¦");
+    super("æ•™å¸ˆ");
     this.idd = idd;
     setLocation(300, 200);
     setSize(300, 340);
     contain = new JPanel();
     contain.setLayout(null);
     add(contain);
-    infoButton = new JButton("ĞÅÏ¢²éÑ¯");
-    gradeButton = new JButton("³É¼¨µÇÂ¼");
-    courseButton = new JButton("È«²¿¿Î³Ì");
-    editButton = new JButton("ĞŞ¸ÄĞÅÏ¢");
-    courseView = new JButton("¿ª¿Î");
-    sortGrade = new JButton("³É¼¨Í³¼Æ");
+    infoButton = new JButton("ä¿¡æ¯æŸ¥è¯¢");
+    gradeButton = new JButton("æˆç»©ç™»å½•");
+    courseButton = new JButton("å…¨éƒ¨è¯¾ç¨‹");
+    editButton = new JButton("ä¿®æ”¹ä¿¡æ¯");
+    courseView = new JButton("å¼€è¯¾");
+    sortGrade = new JButton("æˆç»©ç»Ÿè®¡");
 
     infoButton.setBounds(70, 40, 140, 30);
     editButton.setBounds(70, 80, 140, 30);

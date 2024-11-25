@@ -18,23 +18,23 @@ import controller.EditInfo;
 @SuppressWarnings("serial")
 public class AdministratorPanel extends JFrame implements ActionListener {
 	/*
-	 * ¹ÜÀíÔ±µÇÂ½ºó²Ù×÷Ö÷½çÃæ
+	 * ç®¡ç†å‘˜ç™»é™†åæ“ä½œä¸»ç•Œé¢
 	 */
 	JButton deleteUser, addUser, selfInfo;
 	JPanel contain;
 	String idd;
 
 	public AdministratorPanel(String idd) {
-		super("ÏµÍ³¹ÜÀíÔ±");
+		super("ç³»ç»Ÿç®¡ç†å‘˜");
 		this.idd = idd;
 		setLocation(300, 200);
 		setSize(300, 340);
 		contain = new JPanel();
 		contain.setLayout(null);
 		add(contain);
-		selfInfo = new JButton("ĞŞ¸ÄĞÅÏ¢");
-		addUser = new JButton("Ôö¼ÓÓÃ»§");
-		deleteUser = new JButton("É¾³ıÓÃ»§");
+		selfInfo = new JButton("ä¿®æ”¹ä¿¡æ¯");
+		addUser = new JButton("å¢åŠ ç”¨æˆ·");
+		deleteUser = new JButton("åˆ é™¤ç”¨æˆ·");
 		selfInfo.setBounds(70, 45, 140, 30);
 		addUser.setBounds(70, 100, 140, 30);
 		deleteUser.setBounds(70, 155, 140, 30);
@@ -50,7 +50,7 @@ public class AdministratorPanel extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == addUser) {
-			new AddUser();    // ÓÃ»§ÃÜÂë³õÊ¼»¯Í³Ò»Îª123456
+			new AddUser();    // ç”¨æˆ·å¯†ç åˆå§‹åŒ–ç»Ÿä¸€ä¸º123456
 		} else if (e.getSource() == deleteUser) {
 			new DeleteUser();
 		} else if (e.getSource() == selfInfo) {

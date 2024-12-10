@@ -24,6 +24,19 @@ public class AdministratorDao {
         }
         return resultUser;
     }
+    public static int find(Connection con, Administrator stu)throws Exception
+    {
+        Administrator resultUser = null;
+        String sql = "select * from administrator where id = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1,stu.getId());
+        ResultSet rs = ps.executeQuery();
+//如果查询到了该学生的记录，就会实例化这个学生
+        if (rs.next()) {
+            return 1;
+        }
+        return 0;
+    }
     public static void update(Connection con, Administrator stu)throws Exception
     {
         String sqls=" insert into administrator values(?,?,?,?,?,?,?)";
@@ -35,6 +48,14 @@ public class AdministratorDao {
         ps.setString(4, stu.getBirthday());
         ps.setString(6,stu.getMajor());
         ps.setString(7,stu.getInstitute());
+        ps.executeUpdate();
+
+    }
+    public static void delete(Connection con, String id)throws Exception
+    {
+        String sql = "delete from administrator where id = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1,id);
         ps.executeUpdate();
 
     }

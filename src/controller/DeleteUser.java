@@ -1,6 +1,10 @@
 package controller;
 
 
+import model.Administrator;
+import model.Student;
+import model.Teacher;
+
 import java.awt.AWTEvent;
 import java.awt.Choice;
 import java.awt.event.ActionEvent;
@@ -65,32 +69,35 @@ public class DeleteUser extends JFrame implements ActionListener {
 		if (e.getSource() == submit) {
 			String ch = (String) chooice.getSelectedItem();
 			if (ch == "学生") {
-				if ((new CheckInfo().isMember("student", idt.getText(), "000") == 2)) {
+				UserType us=UserType.Student;
+				if ((new CheckInfo().FindMember(us,id.getText())) == 1) {
 					
-					file = file + "student.txt";
-					
-					ArrayList<String> modifiedContent = new ArrayList<String>();
+					//file = file + "student.txt";
+					Student stu=new Student();
+					//ArrayList<String> modifiedContent = new ArrayList<String>();
 					// StringBuilder result = new StringBuilder();
+					stu.setId(id.getText());
 					try {
-						BufferedReader br = new BufferedReader(new FileReader(file));
-						String s = null;
-						while ((s = br.readLine()) != null) {  // 先将原来存在的信息存储起来
-							String[] result = s.split(" ");
-							
-							if(result[0].equals(idt.getText())){
-								continue;
-							}
-
-							String s1 = "";
-							for (int i = 0; i < result.length - 1; i++) {
-								s1 = s1 + result[i];
-								s1 = s1 + " ";
-							}
-							s1 = s1 + result[result.length - 1];
-							// System.out.println(s1);
-							modifiedContent.add(s1);
-						}
-						br.close();
+//						BufferedReader br = new BufferedReader(new FileReader(file));
+//						String s = null;
+//						while ((s = br.readLine()) != null) {  // 先将原来存在的信息存储起来
+//							String[] result = s.split(" ");
+//
+//							if(result[0].equals(idt.getText())){
+//								continue;
+//							}
+//
+//							String s1 = "";
+//							for (int i = 0; i < result.length - 1; i++) {
+//								s1 = s1 + result[i];
+//								s1 = s1 + " ";
+//							}
+//							s1 = s1 + result[result.length - 1];
+//							// System.out.println(s1);
+//							modifiedContent.add(s1);
+//						}
+//						br.close();
+						new CheckInfo().DeleteMember_Student(stu);
 
 					} catch (Exception e1) {
 						e1.printStackTrace();
@@ -98,21 +105,21 @@ public class DeleteUser extends JFrame implements ActionListener {
 					
 					
 
-					try {
-						FileWriter fw = new FileWriter(file);
-						BufferedWriter bw = new BufferedWriter(fw);
-
-						for (int i = 0; i < modifiedContent.size(); i++) {
-							bw.write(modifiedContent.get(i));
-							bw.newLine();
-						}
-
-						bw.close();
-						fw.close();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+//					try {
+//						FileWriter fw = new FileWriter(file);
+//						BufferedWriter bw = new BufferedWriter(fw);
+//
+//						for (int i = 0; i < modifiedContent.size(); i++) {
+//							bw.write(modifiedContent.get(i));
+//							bw.newLine();
+//						}
+//
+//						bw.close();
+//						fw.close();
+//					} catch (IOException e1) {
+//						// TODO Auto-generated catch block
+//						e1.printStackTrace();
+//					}
 
 					
 					JOptionPane.showMessageDialog(null, "删除学生成功", "提示", JOptionPane.INFORMATION_MESSAGE);
@@ -120,54 +127,57 @@ public class DeleteUser extends JFrame implements ActionListener {
 					JOptionPane.showMessageDialog(null, "此学生不存在！", "提示", JOptionPane.INFORMATION_MESSAGE);
 				}
 			} else if (ch == "教师") {
-				 if ((new CheckInfo().isMember("teacher", idt.getText(), "000") == 2)) {
+				UserType us=UserType.Teacher;
+				 if ((new CheckInfo().FindMember(us,id.getText())) == 1) {
 					
-					file = file + "teacher.txt";
-					
-					ArrayList<String> modifiedContent = new ArrayList<String>();
+//					file = file + "teacher.txt";
+					 Teacher t=new Teacher();
+					 t.setId(id.getText());
+//					ArrayList<String> modifiedContent = new ArrayList<String>();
 					// StringBuilder result = new StringBuilder();
 					try {
-						BufferedReader br = new BufferedReader(new FileReader(file));
-						String s = null;
-						while ((s = br.readLine()) != null) {  // 先将原来存在的信息存储起来
-							String[] result = s.split(" ");
-							
-							if(result[0].equals(idt.getText())){
-								continue;
-							}
+//						BufferedReader br = new BufferedReader(new FileReader(file));
+//						String s = null;
+//						while ((s = br.readLine()) != null) {  // 先将原来存在的信息存储起来
+//							String[] result = s.split(" ");
+//
+//							if(result[0].equals(idt.getText())){
+//								continue;
+//							}
+//
+//							String s1 = "";
+//							for (int i = 0; i < result.length - 1; i++) {
+//								s1 = s1 + result[i];
+//								s1 = s1 + " ";
+//							}
+//							s1 = s1 + result[result.length - 1];
+//							// System.out.println(s1);
+//							modifiedContent.add(s1);
+//						}
+//						br.close();
 
-							String s1 = "";
-							for (int i = 0; i < result.length - 1; i++) {
-								s1 = s1 + result[i];
-								s1 = s1 + " ";
-							}
-							s1 = s1 + result[result.length - 1];
-							// System.out.println(s1);
-							modifiedContent.add(s1);
-						}
-						br.close();
-
+						new CheckInfo().DeleteMember_Teacher(t);
 					} catch (Exception e1) {
 						e1.printStackTrace();
 					}
 					
 					
 
-					try {
-						FileWriter fw = new FileWriter(file);
-						BufferedWriter bw = new BufferedWriter(fw);
-
-						for (int i = 0; i < modifiedContent.size(); i++) {
-							bw.write(modifiedContent.get(i));
-							bw.newLine();
-						}
-
-						bw.close();
-						fw.close();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+//					try {
+//						FileWriter fw = new FileWriter(file);
+//						BufferedWriter bw = new BufferedWriter(fw);
+//
+//						for (int i = 0; i < modifiedContent.size(); i++) {
+//							bw.write(modifiedContent.get(i));
+//							bw.newLine();
+//						}
+//
+//						bw.close();
+//						fw.close();
+//					} catch (IOException e1) {
+//						// TODO Auto-generated catch block
+//						e1.printStackTrace();
+//					}
 
 				
 					JOptionPane.showMessageDialog(null, "删除教师成功", "提示", JOptionPane.INFORMATION_MESSAGE);
@@ -177,52 +187,54 @@ public class DeleteUser extends JFrame implements ActionListener {
 			} else if (ch == "教务员") {
 				if ((new CheckInfo().isMember("administrator", idt.getText(), "000") == 2)) {
 					
-					file = file + "administrator.txt";
-					
-					ArrayList<String> modifiedContent = new ArrayList<String>();
+//					file = file + "administrator.txt";
+					Administrator a=new Administrator();
+//					ArrayList<String> modifiedContent = new ArrayList<String>();
 					// StringBuilder result = new StringBuilder();
+					a.setId(id.getText());
 					try {
-						BufferedReader br = new BufferedReader(new FileReader(file));
-						String s = null;
-						while ((s = br.readLine()) != null) {  // 先将原来存在的信息存储起来
-							String[] result = s.split(" ");
-							
-							if(result[0].equals(idt.getText())){
-								continue;
-							}
+//						BufferedReader br = new BufferedReader(new FileReader(file));
+//						String s = null;
+//						while ((s = br.readLine()) != null) {  // 先将原来存在的信息存储起来
+//							String[] result = s.split(" ");
+//
+//							if(result[0].equals(idt.getText())){
+//								continue;
+//							}
+//
+//							String s1 = "";
+//							for (int i = 0; i < result.length - 1; i++) {
+//								s1 = s1 + result[i];
+//								s1 = s1 + " ";
+//							}
+//							s1 = s1 + result[result.length - 1];
+//							// System.out.println(s1);
+//							modifiedContent.add(s1);
 
-							String s1 = "";
-							for (int i = 0; i < result.length - 1; i++) {
-								s1 = s1 + result[i];
-								s1 = s1 + " ";
-							}
-							s1 = s1 + result[result.length - 1];
-							// System.out.println(s1);
-							modifiedContent.add(s1);
-						}
-						br.close();
-
+//						}
+//						br.close();
+					new CheckInfo().DeleteMember_Administrator(a);
 					} catch (Exception e1) {
 						e1.printStackTrace();
 					}
 					
 					
 
-					try {
-						FileWriter fw = new FileWriter(file);
-						BufferedWriter bw = new BufferedWriter(fw);
-
-						for (int i = 0; i < modifiedContent.size(); i++) {
-							bw.write(modifiedContent.get(i));
-							bw.newLine();
-						}
-
-						bw.close();
-						fw.close();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+//					try {
+//						FileWriter fw = new FileWriter(file);
+//						BufferedWriter bw = new BufferedWriter(fw);
+//
+//						for (int i = 0; i < modifiedContent.size(); i++) {
+//							bw.write(modifiedContent.get(i));
+//							bw.newLine();
+//						}
+//
+//						bw.close();
+//						fw.close();
+//					} catch (IOException e1) {
+//						// TODO Auto-generated catch block
+//						e1.printStackTrace();
+//					}
 
 					
 					

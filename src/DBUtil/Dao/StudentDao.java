@@ -25,9 +25,21 @@ public class StudentDao {
         }
         return resultUser;
     }
+    public static int find(Connection con, Student stu)throws Exception
+    {
+        String sql = "select * from student where id = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1,stu.getId());
+        ResultSet rs = ps.executeQuery();
+//如果查询到了该学生的记录，就会实例化这个学生
+        if (rs.next()) {
+            return 0;
+        }
+        return 1;
+    }
     public static void update(Connection con, Student stu)throws Exception
     {
-        String sqls=" insert into administrator values(?,?,?,?,?,?,?)";
+        String sqls=" insert into student values(?,?,?,?,?,?,?)";
         PreparedStatement ps = con.prepareStatement(sqls);
         ps.setString(1,stu.getId());
         ps.setString(2,stu.getName());
@@ -39,4 +51,13 @@ public class StudentDao {
         ps.executeUpdate();
 
     }
+    public static void delete(Connection con, String id)throws Exception
+    {
+        String sql = "delete from student where id = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1,id);
+        ps.executeUpdate();
+
+    }
+
 }

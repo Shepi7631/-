@@ -131,6 +131,73 @@ public class CheckInfo {
         }
     return judge;
     }
+    public int FindMember(UserType us,String id) {
+        Connection conn = null;
+        int judge=1;
+        if (us==UserType.Administrator)
+        {
+            Administrator adm=new Administrator();
+            adm.setId(id);
+            Administrator current=null;
+            try {
+                conn = dbUtil.getConnection();
+                judge = AdministratorDao.find(conn, adm);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            finally {
+                try {
+                    dbUtil.close_Con(conn);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        } else if (us==UserType.Teacher)
+        {
+            Teacher tea=new Teacher();
+            tea.setId(id);
+            Teacher current=null;
+            try {
+                conn = dbUtil.getConnection();
+                judge = TeacherDao.find(conn, tea);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            finally {
+                try {
+                    dbUtil.close_Con(conn);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }else if (us==UserType.Student)
+        {
+            Student stu = new Student();
+            stu.setId(id);
+            Student current=null;
+            try {
+                conn = dbUtil.getConnection();
+                judge = StudentDao.find(conn, stu);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            finally {
+                try {
+                    dbUtil.close_Con(conn);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return judge;
+    }
+
+
+
+
     public void AddMmber_Administrator(Administrator adm) {
         Connection conn = null;
         try {
@@ -186,4 +253,38 @@ public class CheckInfo {
         }
 
     }
+
+    public void DeleteMember_Administrator(Administrator adm) {
+        Connection conn = null;
+        try {
+            conn=dbUtil.getConnection();
+            String id=adm.getId();
+            AdministratorDao.delete(conn,id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void DeleteMember_Student(Student stu) {
+        Connection conn = null;
+        try {
+            conn=dbUtil.getConnection();
+            String id=stu.getId();
+            StudentDao.delete(conn,id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void DeleteMember_Teacher(Teacher teacher) {
+        Connection conn = null;
+        try {
+            conn=dbUtil.getConnection();
+            String id=teacher.getId();
+            TeacherDao.delete(conn,id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
+
+

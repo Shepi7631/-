@@ -44,22 +44,22 @@ public class MainFrame extends JFrame implements ActionListener {
         idTextField = new JTextField();
         passwdTextField = new JPasswordField();
         logon = new JButton("登陆");
-        //chooice = new Choice();
-        //chooice.addItem("学生");
-        //chooice.addItem("教师");
-        //chooice.addItem("教务员");
-        //chooice.addItem("系统管理员");
+        chooice = new Choice();
+        chooice.addItem("学生");
+        chooice.addItem("教师");
+        chooice.addItem("教务员");
+        chooice.addItem("系统管理员");
         idLabel.setBounds(42, 45, 75, 35);
         idTextField.setBounds(80, 45, 150, 35);
         passwdLabel.setBounds(40, 100, 75, 35);
         passwdTextField.setBounds(80, 100, 150, 35);
-        //chooice.setBounds(80, 160, 150, 35);
+        chooice.setBounds(80, 160, 150, 35);
         logon.setBounds(102, 220, 70, 30);
         contain.add(idLabel);
         contain.add(idTextField);
         contain.add(passwdLabel);
         contain.add(passwdTextField);
-        //contain.add(chooice);
+        contain.add(chooice);
         contain.add(logon);
         logon.addActionListener(this);
         add(contain);
@@ -67,72 +67,76 @@ public class MainFrame extends JFrame implements ActionListener {
         enableEvents(AWTEvent.WINDOW_EVENT_MASK);
     }
 
-    public void actionPerformed(ActionEvent e) {
-//        if (e.getSource() != logon) return;
-//        UserType type = new CheckInfo().CheckMember(idTextField.getText(), new String(passwdTextField.getPassword()));
-//        if (type == UserType.Error) {
-//            count += 1;
-//            if (count < 5) {
-//                JOptionPane.showMessageDialog(null, String.format("无此用户，或者密码输入错误！(还剩%d次机会)", 5 - count),
-//                        "错误", JOptionPane.INFORMATION_MESSAGE);
-//            }
-//            if (count >= 5) {
-//                JOptionPane.showMessageDialog(null, "错误次数过多！你已被暂时冻结！",
-//                        "错误", JOptionPane.INFORMATION_MESSAGE);
-//                this.dispose();
-//                setVisible(false);
-//                System.exit(0);
-//            }
-//        }
-//        else{
-//            switch (type){
-//                case Student -> {
-//                    setVisible(false);
-//                    new StudentsPanel(idTextField.getText());
-//                    break;
-//                }
-//                case Teacher -> {
-//                    setVisible(false);
-//                    new TeachersPanel(idTextField.getText());
-//                    break;
-//                }
-//                case Administrator -> {
-//                    setVisible(false);
-//                    new AdministratorPanel(idTextField.getText());
-//                    break;
-//                }
-//            }
-//        }
-
-        if (e.getSource() != logon) return;
-
-        if ((new CheckInfo().isMember("student", idTextField.getText(),
-                new String(passwdTextField.getPassword()))) == 1) {
-            setVisible(false);
-            new StudentsPanel(idTextField.getText());
-        } else if ((new CheckInfo().isMember("teacher", idTextField.getText(),
-                new String(passwdTextField.getPassword(), 0,
-                        passwdTextField.getPassword().length))) == 1) {
-            setVisible(false);
-            new TeachersPanel(idTextField.getText());
-        } else if
-        ((new CheckInfo().isMember("administrator", idTextField
-                        .getText(), new String(passwdTextField.getPassword(),
-                        0, passwdTextField.getPassword().length))) == 1) {
-            setVisible(false);
-            new AdministratorPanel(idTextField.getText());
-        } else {
-            count += 1;
-            if (count <= 5) {
-                JOptionPane.showMessageDialog(null, "无此用户，或者密码输入错误！",
-                        "错误", JOptionPane.INFORMATION_MESSAGE);
+    public void actionPerformed(ActionEvent e)
+    {
+        if (e.getSource() == logon)
+        {
+            String ch = (String) chooice.getSelectedItem();
+            if (ch == "学生") {
+                UserType us=UserType.Student;
+                int i=9;
+//                i=(new CheckInfo().CheckMember(us,idTextField.getText(), new String(passwdTextField.getPassword())));
+                if ((new CheckInfo().CheckMember(us,idTextField.getText(), new String(passwdTextField.getPassword()))) == 1)
+                {
+                    setVisible(false);
+                    new StudentsPanel(idTextField.getText());
+                } else
+                {
+                    count += 1;
+                    if (count < 5)
+                    {
+                        JOptionPane.showMessageDialog(null, "无此用户，或者密码输入错误！(还剩)",
+                                "错误", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    if (count >= 5) {
+                        JOptionPane.showMessageDialog(null, "错误次数超过5次！",
+                                "错误", JOptionPane.INFORMATION_MESSAGE);
+                        this.dispose();
+                        setVisible(false);
+                        System.exit(0);
+                    }
+                }
             }
-            if (count > 5) {
-                JOptionPane.showMessageDialog(null, "错误次数超过5次！",
-                        "错误", JOptionPane.INFORMATION_MESSAGE);
-                this.dispose();
-                setVisible(false);
-                System.exit(0);
+            else if (ch == "教师") {
+                UserType us=UserType.Teacher;
+                if ((new CheckInfo().CheckMember(us,idTextField.getText(), new String(passwdTextField.getPassword()))) == 1)
+                {
+                    setVisible(false);
+                    new TeachersPanel(idTextField.getText());
+                } else {
+                    count += 1;
+                    if (count <= 5) {
+                        JOptionPane.showMessageDialog(null, "无此用户，或者密码输入错误！",
+                                "错误", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    if (count > 5) {
+                        JOptionPane.showMessageDialog(null, "错误次数超过5次！",
+                                "错误", JOptionPane.INFORMATION_MESSAGE);
+                        this.dispose();
+                        setVisible(false);
+                        System.exit(0);
+                    }
+                }
+            } else if (ch == "系统管理员") {
+                UserType us=UserType.Student;
+                if((new CheckInfo().CheckMember(us,idTextField.getText(), new String(passwdTextField.getPassword()))) == 1)
+                {
+                    setVisible(false);
+                    new AdministratorPanel(idTextField.getText());
+                } else {
+                    count += 1;
+                    if (count <= 5) {
+                        JOptionPane.showMessageDialog(null, "无此用户，或者密码输入错误！",
+                                "错误", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    if (count > 5) {
+                        JOptionPane.showMessageDialog(null, "错误次数超过5次！",
+                                "错误", JOptionPane.INFORMATION_MESSAGE);
+                        this.dispose();
+                        setVisible(false);
+                        System.exit(0);
+                    }
+                }
             }
         }
     }

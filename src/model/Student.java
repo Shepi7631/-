@@ -1,6 +1,8 @@
 package model;
 
 
+import java.sql.Date;
+
 public class Student extends User {
 
 	private String sex;

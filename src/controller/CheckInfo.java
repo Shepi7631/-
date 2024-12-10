@@ -1,15 +1,27 @@
 package controller;
 
+import DBUtil.DBUtil;
+import DBUtil.Dao.AdministratorDao;
+import DBUtil.Dao.StudentDao;
+import DBUtil.Dao.TeacherDao;
+import model.Administrator;
+import model.Student;
+import model.Teacher;
 import model.User;
+
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.sql.Connection;
 
 
 public class CheckInfo {
     /*
      * 登陆时检查用户信息
      */
+    private DBUtil dbUtil = new DBUtil();
+
+
     public int isMember(String table, String id, String passwd) {
 
         // String file = "D://test//".concat(table.concat(".txt"));
@@ -37,34 +49,141 @@ public class CheckInfo {
         return 0;
     }
 
-    public UserType CheckMember(String id, String passwd) {
-        String file = System.getProperty("user.dir") + "/data".concat("/user.txt");
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(file));// 构造一个BufferedReader类来读取文件
-            String s = null;
-            while ((s = br.readLine()) != null) {// 使用readLine方法，一次读一行
-                String[] result = s.split(" ");
-                if (result[0].equals(id) && result[1].equals(passwd)) {
-                    br.close();
-                    switch (result[7]) {
-                        case "student":
-                            return UserType.Student;
-                        case "teacher":
-                            return UserType.Teacher;
-                        case "admin":
-                            return UserType.Administrator;
-                        default:
-                            return UserType.Error;
-                    }
+    public int CheckMember(UserType us,String id, String passwd)
+    {
+        Connection conn = null;
+        int judge=1;
+        if (us==UserType.Administrator)
+        {
+            Administrator adm=new Administrator();
+            adm.setId(id);
+            adm.setPwd(passwd);
+            Administrator current=null;
+            try {
+                conn = dbUtil.getConnection();
+                current = AdministratorDao.login(conn, adm);
+                if (current == null) {
+                    judge=0;
+                } else {
+                    judge=1;
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            finally {
+                try {
+                    dbUtil.close_Con(conn);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
-            br.close();
-            return UserType.Error;
+        } else if (us==UserType.Teacher)
+        {
+            Teacher tea=new Teacher();
+            tea.setId(id);
+            tea.setPwd(passwd);
+            Teacher current=null;
+            try {
+                conn = dbUtil.getConnection();
+                current = TeacherDao.login(conn, tea);
+                if (current == null) {
+                    judge=0;
+                } else {
+                    judge=1;
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            finally {
+                try {
+                    dbUtil.close_Con(conn);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }else if (us==UserType.Student)
+        {
+            Student stu = new Student();
+            stu.setId(id);
+            stu.setPwd(passwd);
+            Student current=null;
+            try {
+                conn = dbUtil.getConnection();
+                current = StudentDao.login(conn, stu);
+                if (current == null) {
+                    judge=0;
+                } else {
+                    judge=1;
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            finally {
+                try {
+                    dbUtil.close_Con(conn);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    return judge;
+    }
+    public void AddMmber_Administrator(Administrator adm) {
+        Connection conn = null;
+        try {
+            conn = dbUtil.getConnection();
+            AdministratorDao.update(conn, adm);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                dbUtil.close_Con(conn);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+
+    }
+    public void AddMmber_Teacher(Teacher adm)
+    {
+        Connection conn = null;
+        try {
+            conn = dbUtil.getConnection();
+            TeacherDao.update(conn,adm);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return UserType.Error;
+        finally
+        {
+            try {
+                dbUtil.close_Con(conn);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
     }
+    public void AddMmber_Student(Student adm)
+    {
+        Connection conn = null;
+        try {
+            conn = dbUtil.getConnection();
+            StudentDao.update(conn,adm);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally
+        {
+            try {
+                dbUtil.close_Con(conn);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
-
+    }
 }

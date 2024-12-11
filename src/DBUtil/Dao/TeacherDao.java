@@ -53,6 +53,20 @@ public class TeacherDao {
         ps.executeUpdate();
 
     }
+    public static void refresh(Connection coon,Teacher stu)throws Exception
+    {
+        String sql = "update teacher set name = ?, sex = ?, birthday = ?, pwd = ?, Major = ?, institute = ? ,,where id = ?";
+        PreparedStatement ps = coon.prepareStatement(sql);
+        ps.setString(1,stu.getName());
+        ps.setString(2,stu.getSex());
+        ps.setString(3,stu.getBirthday());
+        ps.setString(4,stu.getPwd());
+        ps.setString(5,stu.getMajor());
+        ps.setString(6,stu.getInstitute());
+
+        ps.executeUpdate();
+
+    }
     public static void delete(Connection con, String id)throws Exception
     {
         String sql = "delete from tercher where id = ?";

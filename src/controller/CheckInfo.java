@@ -2,12 +2,10 @@ package controller;
 
 import DBUtil.DBUtil;
 import DBUtil.Dao.AdministratorDao;
+import DBUtil.Dao.CourseDao;
 import DBUtil.Dao.StudentDao;
 import DBUtil.Dao.TeacherDao;
-import model.Administrator;
-import model.Student;
-import model.Teacher;
-import model.User;
+import model.*;
 
 
 import java.io.BufferedReader;
@@ -196,8 +194,6 @@ public class CheckInfo {
     }
 
 
-
-
     public void AddMmber_Administrator(Administrator adm) {
         Connection conn = null;
         try {
@@ -281,6 +277,56 @@ public class CheckInfo {
             String id=teacher.getId();
             TeacherDao.delete(conn,id);
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void UpdateMember_Student(Student stu) {
+        Connection conn = null;
+        try {
+            conn= dbUtil.getConnection();
+            StudentDao.refresh(conn,stu);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void UpdateMember_Teacher(Teacher teacher) {
+        Connection conn = null;
+        try {
+            conn= dbUtil.getConnection();
+            TeacherDao.refresh(conn,teacher);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void UpdateMember_Administrator(Administrator adm) {
+        Connection conn = null;
+        try {
+            conn= dbUtil.getConnection();
+            AdministratorDao.refresh(conn,adm);
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public int Check_Course(String id)
+    {
+        Connection conn = null;
+        int judge=0;
+        try{
+            conn = dbUtil.getConnection();
+            judge = CourseDao.CheckCourse(conn,id);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return judge;
+    }
+    public void Insert_Course(Course course)
+    {
+        Connection conn = null;
+        try {
+            conn=dbUtil.getConnection();
+            CourseDao.insert(conn,course);
+        }catch(Exception e){
             e.printStackTrace();
         }
     }

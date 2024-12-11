@@ -39,7 +39,7 @@ public class StudentDao {
     }
     public static void update(Connection con, Student stu)throws Exception
     {
-        String sqls=" insert into student values(?,?,?,?,?,?,?)";
+        String sqls=" insert into student va lues(?,?,?,?,?,?,?)";
         PreparedStatement ps = con.prepareStatement(sqls);
         ps.setString(1,stu.getId());
         ps.setString(2,stu.getName());
@@ -48,6 +48,20 @@ public class StudentDao {
         ps.setString(5,stu.getPwd());
         ps.setString(6,stu.getMajor());
         ps.setString(7,stu.getInstitute());
+        ps.executeUpdate();
+
+    }
+    public static void refresh(Connection coon,Student stu)throws Exception
+    {
+        String sql = "update student set name = ?, sex = ?, birthday = ?, pwd = ?, Major = ?, institute = ? ,,where id = ?";
+        PreparedStatement ps = coon.prepareStatement(sql);
+        ps.setString(1,stu.getName());
+        ps.setString(2,stu.getSex());
+        ps.setString(3,stu.getBirthday());
+        ps.setString(4,stu.getPwd());
+        ps.setString(5,stu.getMajor());
+        ps.setString(6,stu.getInstitute());
+
         ps.executeUpdate();
 
     }

@@ -1,5 +1,9 @@
 package controller;
 
+import model.Administrator;
+import model.Student;
+import model.Teacher;
+
 import java.awt.AWTEvent;
 import java.awt.Checkbox;
 import java.awt.CheckboxGroup;
@@ -119,182 +123,203 @@ public class EditInfo extends JFrame implements ActionListener {
 					}
 
 					if (flag == 0) { // 学生修改信息
-
-						ArrayList<String> modifiedContent = new ArrayList<String>();
-						String file = System.getProperty("user.dir")
-								+ "/data/student.txt";
-						// String file = "D://test//student.txt";
-						// StringBuilder result = new StringBuilder();
-						try {
-							BufferedReader br = new BufferedReader(
-									new FileReader(file));
-
-							String s = null;
-							while ((s = br.readLine()) != null) {
-								String[] result = s.split(" ");
-								if (result[0].equals(id)) {
-									result[0] = result[0]; // 号码不能更改
-									result[1] = result[1].replace(result[1],
-											pass2t.getText());
-									result[2] = result[2].replace(result[2],
-											namet.getText());
-									result[3] = result[3].replace(result[3], m);
-									result[4] = result[4].replace(result[4],
-											birtht.getText());
-									result[5] = result[5].replace(result[5],
-											instt.getText());
-									result[6] = result[6].replace(result[6],
-											majort.getText());
-
-								}
-								String s1 = "";
-								for (int i = 0; i < result.length - 1; i++) {
-									s1 = s1 + result[i];
-									s1 = s1 + " ";
-								}
-								s1 = s1 + result[result.length - 1];
-								// System.out.println(s1);
-								modifiedContent.add(s1);
-							}
-							br.close();
-
-						} catch (Exception e1) {
-							e1.printStackTrace();
-						}
-
-						try {
-							FileWriter fw = new FileWriter(file);
-							BufferedWriter bw = new BufferedWriter(fw);
-
-							for (int i = 0; i < modifiedContent.size(); i++) {
-								bw.write(modifiedContent.get(i));
-								bw.newLine();
-							}
-
-							bw.close();
-							fw.close();
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						Student stu=new Student();
+						stu.setName(namet.getText());
+						stu.setMajor(majort.getText());
+						stu.setSex(m);
+						stu.setId(this.id);
+						stu.setPwd(pass1t.getText());
+						stu.setInstitute(inst.getText());
+						new CheckInfo().UpdateMember_Student(stu);
+//						ArrayList<String> modifiedContent = new ArrayList<String>();
+//						String file = System.getProperty("user.dir")
+//								+ "/data/student.txt";
+//						// String file = "D://test//student.txt";
+//						// StringBuilder result = new StringBuilder();
+//						try {
+//							BufferedReader br = new BufferedReader(
+//									new FileReader(file));
+//
+//							String s = null;
+//							while ((s = br.readLine()) != null) {
+//								String[] result = s.split(" ");
+//								if (result[0].equals(id)) {
+//									result[0] = result[0]; // 号码不能更改
+//									result[1] = result[1].replace(result[1],
+//											pass2t.getText());
+//									result[2] = result[2].replace(result[2],
+//											namet.getText());
+//									result[3] = result[3].replace(result[3], m);
+//									result[4] = result[4].replace(result[4],
+//											birtht.getText());
+//									result[5] = result[5].replace(result[5],
+//											instt.getText());
+//									result[6] = result[6].replace(result[6],
+//											majort.getText());
+//
+//								}
+//								String s1 = "";
+//								for (int i = 0; i < result.length - 1; i++) {
+//									s1 = s1 + result[i];
+//									s1 = s1 + " ";
+//								}
+//								s1 = s1 + result[result.length - 1];
+//								// System.out.println(s1);
+//								modifiedContent.add(s1);
+//							}
+//							br.close();
+//
+//						} catch (Exception e1) {
+//							e1.printStackTrace();
+//						}
+//
+//						try {
+//							FileWriter fw = new FileWriter(file);
+//							BufferedWriter bw = new BufferedWriter(fw);
+//
+//							for (int i = 0; i < modifiedContent.size(); i++) {
+//								bw.write(modifiedContent.get(i));
+//								bw.newLine();
+//							}
+//
+//							bw.close();
+//							fw.close();
+//						} catch (IOException e1) {
+//							//
+//							e1.printStackTrace();
+//						}
 
 					} else if (flag == 1) { // 教师修改信息
-
-						ArrayList<String> modifiedContent = new ArrayList<String>();
-						String file = System.getProperty("user.dir")
-								+ "/data/teacher.txt";
-						// String file = "D://test//teacher.txt";
-						// StringBuilder result = new StringBuilder();
-						try {
-							BufferedReader br = new BufferedReader(
-									new FileReader(file));
-
-							String s = null;
-							while ((s = br.readLine()) != null) {
-								String[] result = s.split(" ");
-								if (result[0].equals(id)) {
-									result[0] = result[0]; // 号码不能更改
-									result[1] = result[1].replace(result[1],
-											pass2t.getText());
-									result[2] = result[2].replace(result[2],
-											namet.getText());
-									result[3] = result[3].replace(result[3], m);
-									result[4] = result[4].replace(result[4],
-											birtht.getText());
-									result[5] = result[5].replace(result[5],
-											instt.getText());
-									result[6] = result[6].replace(result[6],
-											majort.getText());
-								}
-								String s1 = "";
-								for (int i = 0; i < result.length - 1; i++) {
-									s1 = s1 + result[i];
-									s1 = s1 + " ";
-								}
-								s1 = s1 + result[result.length - 1];
-								// System.out.println(s1);
-								modifiedContent.add(s1);
-							}
-							br.close();
-
-						} catch (Exception e1) {
-							e1.printStackTrace();
-						}
-
-						try {
-							FileWriter fw = new FileWriter(file);
-							BufferedWriter bw = new BufferedWriter(fw);
-
-							for (int i = 0; i < modifiedContent.size(); i++) {
-								bw.write(modifiedContent.get(i));
-								bw.newLine();
-							}
-
-							bw.close();
-							fw.close();
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						Teacher t=new Teacher();
+						t.setName(namet.getText());
+						t.setMajor(majort.getText());
+						t.setSex(m);
+						t.setId(this.id);
+						t.setPwd(pass1t.getText());
+						t.setInstitute(inst.getText());
+						new CheckInfo().UpdateMember_Teacher(t);
+//						ArrayList<String> modifiedContent = new ArrayList<String>();
+//						String file = System.getProperty("user.dir")
+//								+ "/data/teacher.txt";
+//						// String file = "D://test//teacher.txt";
+//						// StringBuilder result = new StringBuilder();
+//						try {
+//							BufferedReader br = new BufferedReader(
+//									new FileReader(file));
+//
+//							String s = null;
+//							while ((s = br.readLine()) != null) {
+//								String[] result = s.split(" ");
+//								if (result[0].equals(id)) {
+//									result[0] = result[0]; // 号码不能更改
+//									result[1] = result[1].replace(result[1],
+//											pass2t.getText());
+//									result[2] = result[2].replace(result[2],
+//											namet.getText());
+//									result[3] = result[3].replace(result[3], m);
+//									result[4] = result[4].replace(result[4],
+//											birtht.getText());
+//									result[5] = result[5].replace(result[5],
+//											instt.getText());
+//									result[6] = result[6].replace(result[6],
+//											majort.getText());
+//								}
+//								String s1 = "";
+//								for (int i = 0; i < result.length - 1; i++) {
+//									s1 = s1 + result[i];
+//									s1 = s1 + " ";
+//								}
+//								s1 = s1 + result[result.length - 1];
+//								// System.out.println(s1);
+//								modifiedContent.add(s1);
+//							}
+//							br.close();
+//
+//						} catch (Exception e1) {
+//							e1.printStackTrace();
+//						}
+//
+//						try {
+//							FileWriter fw = new FileWriter(file);
+//							BufferedWriter bw = new BufferedWriter(fw);
+//
+//							for (int i = 0; i < modifiedContent.size(); i++) {
+//								bw.write(modifiedContent.get(i));
+//								bw.newLine();
+//							}
+//
+//							bw.close();
+//							fw.close();
+//						} catch (IOException e1) {
+//							//
+//							e1.printStackTrace();
+//						}
 
 					} else if (flag == 3) { // 教务员修改信息
-
-						ArrayList<String> modifiedContent = new ArrayList<String>();
-						String file = System.getProperty("user.dir")
-								+ "/data/administrator.txt";
-						// String file = "D://test//administrator.txt";
-						// StringBuilder result = new StringBuilder();
-						try {
-							BufferedReader br = new BufferedReader(
-									new FileReader(file));
-
-							String s = null;
-							while ((s = br.readLine()) != null) {
-								String[] result = s.split(" ");
-								if (result[0].equals(id)) {
-									result[0] = result[0]; // 号码不能更改
-									result[1] = result[1].replace(result[1],
-											pass2t.getText());
-									result[2] = result[2].replace(result[2],
-											namet.getText());
-									result[3] = result[3].replace(result[3], m);
-									result[4] = result[4].replace(result[4],
-											birtht.getText());
-									result[5] = result[5].replace(result[5],
-											instt.getText());
-									result[6] = result[6].replace(result[6],
-											majort.getText());
-								}
-								String s1 = "";
-								for (int i = 0; i < result.length - 1; i++) {
-									s1 = s1 + result[i];
-									s1 = s1 + " ";
-								}
-								s1 = s1 + result[result.length - 1];
-								// System.out.println(s1);
-								modifiedContent.add(s1);
-							}
-							br.close();
-
-						} catch (Exception e1) {
-							e1.printStackTrace();
-						}
-
-						try {
-							FileWriter fw = new FileWriter(file);
-							BufferedWriter bw = new BufferedWriter(fw);
-
-							for (int i = 0; i < modifiedContent.size(); i++) {
-								bw.write(modifiedContent.get(i));
-								bw.newLine();
-							}
-
-							bw.close();
-							fw.close();
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						Administrator a=new Administrator();
+						a.setName(namet.getText());
+						a.setMajor(majort.getText());
+						a.setSex(m);
+						a.setId(this.id);
+						a.setPwd(pass1t.getText());
+						a.setInstitute(inst.getText());
+						new CheckInfo().UpdateMember_Administrator(a);
+//						ArrayList<String> modifiedContent = new ArrayList<String>();
+//						String file = System.getProperty("user.dir")
+//								+ "/data/administrator.txt";
+//						// String file = "D://test//administrator.txt";
+//						// StringBuilder result = new StringBuilder();
+//						try {
+//							BufferedReader br = new BufferedReader(
+//									new FileReader(file));
+//
+//							String s = null;
+//							while ((s = br.readLine()) != null) {
+//								String[] result = s.split(" ");
+//								if (result[0].equals(id)) {
+//									result[0] = result[0]; // 号码不能更改
+//									result[1] = result[1].replace(result[1],
+//											pass2t.getText());
+//									result[2] = result[2].replace(result[2],
+//											namet.getText());
+//									result[3] = result[3].replace(result[3], m);
+//									result[4] = result[4].replace(result[4],
+//											birtht.getText());
+//									result[5] = result[5].replace(result[5],
+//											instt.getText());
+//									result[6] = result[6].replace(result[6],
+//											majort.getText());
+//								}
+//								String s1 = "";
+//								for (int i = 0; i < result.length - 1; i++) {
+//									s1 = s1 + result[i];
+//									s1 = s1 + " ";
+//								}
+//								s1 = s1 + result[result.length - 1];
+//								// System.out.println(s1);
+//								modifiedContent.add(s1);
+//							}
+//							br.close();
+//
+//						} catch (Exception e1) {
+//							e1.printStackTrace();
+//						}
+//
+//						try {
+//							FileWriter fw = new FileWriter(file);
+//							BufferedWriter bw = new BufferedWriter(fw);
+//
+//							for (int i = 0; i < modifiedContent.size(); i++) {
+//								bw.write(modifiedContent.get(i));
+//								bw.newLine();
+//							}
+//
+//							bw.close();
+//							fw.close();
+//						} catch (IOException e1) {
+//							//
+//							e1.printStackTrace();
+//						}
 
 					}
 

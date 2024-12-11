@@ -24,6 +24,8 @@ import javax.swing.JTextField;
 
 import model.Course;
 
+import static DBUtil.Dao.CourseDao.CheckCourse;
+
 // SuppressWarnings用于抑制“serial”警告（JFrame类实现了Serializable接口）
 @SuppressWarnings("serial")
 public class AddCourse extends JFrame implements ActionListener {
@@ -115,24 +117,24 @@ public class AddCourse extends JFrame implements ActionListener {
     }
 
     // 检查课程是否已经存在
-    public int hasCourse(String id) {
-        String file = System.getProperty("user.dir") + "/data/course.txt"; // 获取课程文件路径
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(file)); // 创建BufferedReader读取文件
-            String s = null;
-            while ((s = br.readLine()) != null) { // 按行读取文件
-                String[] result = s.split(" "); // 按空格分割字段
-                if (result[0].equals(id)) { // 检查课程号是否匹配
-                    br.close();
-                    return 1; // 如果课程已存在，返回1
-                }
-            }
-            br.close();
-        } catch (Exception e) {
-            e.printStackTrace(); // 异常处理
-        }
-        return 0; // 如果课程不存在，返回0
-    }
+//    public int hasCourse(String id) {
+//        String file = System.getProperty("user.dir") + "/data/course.txt"; // 获取课程文件路径
+//        try {
+//            BufferedReader br = new BufferedReader(new FileReader(file)); // 创建BufferedReader读取文件
+//            String s = null;
+//            while ((s = br.readLine()) != null) { // 按行读取文件
+//                String[] result = s.split(" "); // 按空格分割字段
+//                if (result[0].equals(id)) { // 检查课程号是否匹配
+//                    br.close();
+//                    return 1; // 如果课程已存在，返回1
+//                }
+//            }
+//            br.close();
+//        } catch (Exception e) {
+//            e.printStackTrace(); // 异常处理
+//        }
+//        return 0; // 如果课程不存在，返回0
+//    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -143,41 +145,42 @@ public class AddCourse extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null, "信息不能为空！", "提示", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 // 检查课程是否存在
-                if (hasCourse(idt.getText()) == 1) {
+                if(new CheckInfo().Check_Course(idt.getText()) == 1) {
                     JOptionPane.showMessageDialog(null, "此课程已经存在！", "提示", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    String file = System.getProperty("user.dir") + "/data/course.txt"; // 获取课程文件路径
-                    ArrayList<String> modifiedContent = new ArrayList<>(); // 存储文件的更新内容
-                    try {
-                        BufferedReader br = new BufferedReader(new FileReader(file));
-                        String s = null;
-                        while ((s = br.readLine()) != null) { // 读取已有文件内容
-                            modifiedContent.add(s); // 添加到数组列表
-                        }
-                        br.close();
-                    } catch (Exception e1) {
-                        e1.printStackTrace();
-                    }
+//                    String file = System.getProperty("user.dir") + "/data/course.txt"; // 获取课程文件路径
+//                    ArrayList<String> modifiedContent = new ArrayList<>(); // 存储文件的更新内容
+//                    try {
+//                        BufferedReader br = new BufferedReader(new FileReader(file));
+//                        String s = null;
+//                        while ((s = br.readLine()) != null) { // 读取已有文件内容
+//                            modifiedContent.add(s); // 添加到数组列表
+//                        }
+//                        br.close();
+//                    } catch (Exception e1) {
+//                        e1.printStackTrace();
+//                    }
 
                     // 创建新的课程对象
                     Course course = new Course(idt.getText(), namet.getText(), teacherIdt.getText(), teacherNamet.getText(),
                             creditt.getText(), classHt.getText());
 
                     // 添加新课程的信息
-                    modifiedContent.add(course.getCourseId() + " " + course.getCourseName() + " " + course.getCredit() + " "
-                            + course.getHour() + " " + course.getTeacherId() + " " + course.getTeacherName());
+//                    modifiedContent.add(course.getCourseId() + " " + course.getCourseName() + " " + course.getCredit() + " "
+//                            + course.getHour() + " " + course.getTeacherId() + " " + course.getTeacherName());
 
                     // 将更新后的内容写回文件
                     try {
-                        FileWriter fw = new FileWriter(file);
-                        BufferedWriter bw = new BufferedWriter(fw);
-                        for (String element : modifiedContent) {
-                            bw.write(element);
-                            bw.newLine();
-                        }
-                        bw.close();
-                        fw.close();
-                    } catch (IOException e1) {
+//                        FileWriter fw = new FileWriter(file);
+//                        BufferedWriter bw = new BufferedWriter(fw);
+//                        for (String element : modifiedContent) {
+//                            bw.write(element);
+//                            bw.newLine();
+//                        }
+//                        bw.close();
+//                        fw.close();
+                        new CheckInfo().Insert_Course(course);
+                    } catch (Exception e1) {
                         e1.printStackTrace();
                     }
 

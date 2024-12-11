@@ -1,6 +1,8 @@
 package DBUtil.Dao;
 
 import model.Administrator;
+import model.Student;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -48,6 +50,20 @@ public class AdministratorDao {
         ps.setString(4, stu.getBirthday());
         ps.setString(6,stu.getMajor());
         ps.setString(7,stu.getInstitute());
+        ps.executeUpdate();
+
+    }
+    public static void refresh(Connection coon, Administrator stu)throws Exception
+    {
+        String sql = "update administrator set name = ?, sex = ?, birthday = ?, pwd = ?, Major = ?, institute = ? ,,where id = ?";
+        PreparedStatement ps = coon.prepareStatement(sql);
+        ps.setString(1,stu.getName());
+        ps.setString(2,stu.getSex());
+        ps.setString(3,stu.getBirthday());
+        ps.setString(4,stu.getPwd());
+        ps.setString(5,stu.getMajor());
+        ps.setString(6,stu.getInstitute());
+
         ps.executeUpdate();
 
     }

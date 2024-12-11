@@ -60,7 +60,7 @@ public class GradeEnter extends JFrame implements ActionListener {
   @Override
   public void actionPerformed(ActionEvent e)  {
     if (e.getSource() == submit) {
-      if (hasThisCourse(idt.getText()) == 1) {
+      if (new CheckInfo().Check_Course(idt.getText())==1) {
         enter(); // 进入成绩输入界面
       }
       else {
